@@ -1,0 +1,34 @@
+{
+	'_id' : "xxx",	
+	'groupId' : "xxx",	
+	'type':1,// 1:充值 -2：消费    2：结单  -1：为他人充值  0:开设账户
+	'user' : {
+		'userId' : "xxx",
+		'groupId' : "xxx",
+		'role':'admin',//'founder'
+		'balance' : 200,//余额
+		'realName' : '',
+		'email':'',
+		'mobile':''//手机号
+	},
+	'amount':-10,// 金额
+	'description':'套餐2',// 详细说明
+	'linkedData':
+	{
+		'_id':'',//orderDetail Id
+		'order' : {
+			'_id' : "xxx",
+			'name' : ''
+		
+		},
+		'dish' : {
+			'_id' : "xxx",
+			'name' : '',
+			'price':10// 价格
+		}
+	}
+	'dateTime':'',// 时间
+	'timestamp':'',// 时间戳
+	'isDeleted': 0 //1
+
+}

@@ -1,0 +1,9 @@
+{
+	'_id' : 'uuid',
+	'passwords':'',//md5加密
+	'loginName' : '',
+	'realName' : '',
+	'email':'',
+	'mobile':''//手机号
+	
+}

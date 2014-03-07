@@ -1,0 +1,11 @@
+{
+	'_id' : 'uuid',
+	'userId' : "xxx",
+	'groupId' : "xxx",
+	'role':'admin',//'founder'
+	'balance' : 200,//余额
+	'realName' : '',
+	'email':'',
+	'mobile':'',//手机号
+	'type':1 //1:invite 2:ask for join 3:connected
+}

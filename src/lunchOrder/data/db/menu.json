@@ -1,0 +1,15 @@
+{
+
+	'_id' : "xxx",
+	'groupId' : "xxx",	
+	'name' : '',
+	'contact':{
+		'phone':'',
+		'address':'',
+	},
+	'createTime':'',//创建时间
+	'createTimestamp':''//时间戳
+	'updateTime':'',//修改时间
+	'updateTimestamp':''//时间戳
+
+}

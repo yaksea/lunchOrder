@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src='/static/js/base/jquery-1.7.2.js'></script>
+<script src='/static/js/base/json2.js'></script>
+<script src='/static/js/base/jquery_extend.js'></script>
+{% import json %}
+<script>
+	var identity = {% raw json.dumps(context.identity.toJson()) %};
+	
+
+</script>
+
+<script src="/static/js/component/draggable.js"></script>
+<script src="/static/js/component/calendar.js"></script>
+<script src="/static/js/component/droppable.js"></script>
+<script src="/static/js/component/resizable.js"></script>
+<script src="/static/js/component/linkbutton.js"></script>
+<script src="/static/js/component/panel.js"></script>
+<script src="/static/js/component/window.js"></script>
+<script src="/static/js/component/dialog.js"></script>
+<script src="/static/js/component/messager.js"></script>
+<script src="/static/js/component/form.js"></script>
+<script src="/static/js/component/numberbox.js"></script>
+<script src="/static/js/component/validatebox.js"></script>
+<script src="/static/js/component/combo.js"></script>
+<script src="/static/js/component/combobox.js"></script>
+<script src="/static/js/component/datebox.js"></script>
+<script src="/static/js/component/datetimebox.js"></script>
+<script src="/static/js/component/parser.js"></script>
+<script src="/static/js/component/messagelabel.js"></script>
+<script src="/static/js/component/tooltip.js"></script>
+<script src="/static/js/component/placeholder.js"></script>
+<script src="/static/js/component/easyui-lang-zh_CN.js"></script>
+
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+
+<link href="/static/css/component/spinner.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/calendar.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combo.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combopicker.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combobox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/datagrid.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/datebox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/dialog.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/linkbutton.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/messager.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/panel.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/tooltip.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/validatebox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/window.css" rel="stylesheet" type="text/css" />
+<style>
+.topMenu{
+	padding:0px;
+	margin:0px;
+	width:1000px;
+	font-size:14px;
+}
+.topMenu li{
+	list-style-type:none;
+	float:left;
+	border:solid 0px #dfdfdf;
+	border-bottom:none;
+	padding:0px;
+	margin:0px 5px;
+	background:#bbb;
+    z-index: 1000000;
+    position:relative;
+}
+.topMenu a{
+	padding:16px 50px;
+	line-height:40px;
+	text-decoration: none;
+	color:#fff;
+}
+.topMenu li.active{
+	background:#fff;
+	font-weight:bold;
+	border:solid 1px #bbb;
+	border-bottom:none;
+
+}
+.topMenu li.active a{
+	color:#000;
+
+}
+</style>
+
+{% block head %} {% end %}
+</head>
+<body style="background:#dfdfdf;width:100%;padding:10px 0px 0px;margin:0px;">
+<div align="center">
+<div style="height:40px;"  align="center">
+	<ul class="topMenu">
+		{% module TopMenu() %}
+	</ul>
+	<div style="float:right;">{{context.identity.realName}} &nbsp;&nbsp; <a href="/user/logout">退出</a></div>
+</div>
+<div style="background:#fff;width:1000px;text-align:left;min-height:700px;padding:40px 40px 50px;border:solid 1px #bbb;">
+	{% block body %} {% end %}
+	</div></div>
+</body>
+</html>

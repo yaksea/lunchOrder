@@ -1,0 +1,95 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/manage/orderList.js"></script>
+<style>
+
+</style>
+{% end %} {% block body %}
+<table>
+	<tr>
+		<td valign="top">
+		<table class="tbList tbSelectable" style="width:640px;">
+			<thead>
+			<tr>
+			<th>名称</th>
+			<th>发起人</th>
+			<th>发起时间</th>
+			<th>状态</th>
+			<th>操作</th></tr>
+			</thead>
+			
+			<tbody id="tbList"></tbody>
+		</table>
+		</td>
+		<td valign="top" style="padding-left:40px;">
+			<div class="block" id="pnlSum">
+				<div></div>
+				<div>
+				<table>
+					<tbody id="tbDishCount"></tbody>
+				</table>
+				
+				</div>
+				<div style="padding-top:10px; height:20px;">				
+				<div  style="float:left;">共<span class=totalCount></span>份</div>
+				<div  style="float:right;padding-right:5px;">计：<span class="amount"></span>元</div>
+				</div>
+			</div>
+			<div class="block" id="pnlPayer" style="display:none">
+				<table>
+					<tr>
+						<th>结单人：</th>
+						<td class="name"></td>
+					</tr>
+					<tr>
+						<th>结单时间：</th>
+						<td class="dateTime"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="block" id="pnlOrderDetail" style="display:none">
+				<table>
+					<tbody id="tbOrderDetail"></tbody>
+				</table>
+			</div>			
+			<div class="block" id="pnlMenu">
+					<table>
+						<tr>
+							<th>菜单名称：</th>
+							<td class="name"></td>
+						</tr>
+						<tr>
+							<th>电话：</th>
+							<td class="phone"></td>
+						</tr>
+						<tr>
+							<th>地址：</th>
+							<td class="address"></td>
+						</tr>
+					</table>
+					<table>
+						<tbody id="tbDishes"></tbody>
+					</table>
+			</div>
+		</td>
+	</tr>
+</table>	
+
+<div id="dlgPay" style="display: none;  width: 480px; height: 240px;"
+	buttons=".dlgButtons">
+	<div style="font-size:14px;padding:28px 0px 0px 20px;">是由
+	<select class="payerId"  style="font-size:14px;">
+		<option value="">我</option>
+	</select>
+	付款结单的
+	</div>
+
+	<div style="padding:26px 24px 0px 20px">
+	<div class="warningInfo2">&nbsp;&nbsp;&nbsp;&nbsp;确定是<span class="payerName">您</span>买单的？
+	<br/>系统将分别从各食客账户中扣减菜金共计<span class="sumAmount"></span>元至<span class="payerName">您</span>的账户中。</div></div>
+	<div class='dlgButtons'>
+		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		<a class="easyui-component common save" componentType="linkbutton">确定</a>
+	</div>
+</div>
+{% end %} 

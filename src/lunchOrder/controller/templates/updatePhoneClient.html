@@ -1,0 +1,15 @@
+{% extends "molds/frame.html" %}
+{% block body %}
+<form  action="/upload/phoneclient" method="post" id="form1" encType="multipart/form-data">
+	<div>
+	<select name="type">
+		<option value="android">android</option>
+		<option value="iphone">iphone</option>
+		<option value="webPackage">webPackage</option>
+	</select>
+		<input type="text" name="version"></input>
+		<input type="file" name="file"></input>
+	</div>
+	<input type="submit" value="提交"></input>
+</form>
+{% end %}

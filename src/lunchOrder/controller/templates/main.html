@@ -1,0 +1,20 @@
+{% extends "molds/frame.html" %}
+{% block body %}
+	<div>{{ip}}</div>
+	<ul>
+		<li><a href="/command/restart" target='restart'>重启服务</a></li>
+		<li><a href="/command" target='/command'>shell命令</a></li>
+		<li>-------------------------------</li>
+		<li><a href="/mongodb" target="mongodb">数据库操作</a></li>
+		<li>-------------------------------</li>
+		<li><a href="/cache/clean" target='cache_clean'>clean cache</a></li>
+		<li><a href="/cache/check" target='cache_check'>check memcached alive</a></li>		
+		<!--  li><a href="/controller/default/operate5">数据校正服务</a></li>
+		<li><a href="/controller/default/operate6">索引</a></li-->
+		<li>-------------------------------</li>
+		<li><a href="/upload/" target="upload">上传文件</a></li>
+		<li><a href="/upload/phoneclient" target="upload_PhoneClient">更新手机安装包及版本</a></li>
+		
+	</ul>
+{% end %}
+

@@ -1,0 +1,12 @@
+{
+	'_id' : "xxx",
+	'groupId' : "xxx",
+	'name' : '',
+	'menuId':'xxx',
+	'price':10,//价格
+	'createTime':'',//创建时间
+	'createTimestamp':''//时间戳
+	'updateTime':'',//修改时间
+	'updateTimestamp':''//时间戳
+
+}

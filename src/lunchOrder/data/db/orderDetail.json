@@ -1,0 +1,24 @@
+{
+	'_id' : "xxx", 	
+	'groupId' : "xxx",
+	'user' : {
+		'_id' : "xxx",
+		'name' : ''
+	}
+	'order' : {
+		'_id' : "xxx",
+		'name' : ''
+	
+	},
+	'dish' : {
+		'_id' : "xxx",
+		'name' : '',
+		'price':10// 价格
+	},
+	
+	'createTime':'',// 创建时间
+	'createTimestamp':''// 时间戳
+	'updateTime':'',// 修改时间
+	'updateTimestamp':''// 时间戳
+
+}

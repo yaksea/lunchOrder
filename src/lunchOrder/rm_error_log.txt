@@ -1,0 +1,84 @@
+
+
+=====2013-09-14 22:41:03=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 69, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\user.py", line 78, in post
+    self._identity = Identity(user)
+  File "D:\Work\lunchOrder\src\lunchOrder\base\identity.py", line 17, in __init__
+    self.setUser(user)
+  File "D:\Work\lunchOrder\src\lunchOrder\base\identity.py", line 25, in setUser
+    self.userId = user._id
+AttributeError: 'dict' object has no attribute '_id'
+
+
+=====2013-09-14 22:43:31=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\order.py", line 19, in get
+    self.render('order.html')
+  File "D:\Work\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\web.py", line 500, in render
+    html = self.render_string(template_name, **kwargs)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\web.py", line 607, in render_string
+    return t.generate(**namespace)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\template.py", line 261, in generate
+    return execute()
+  File "order_html.generated.py", line 17, in _execute
+    _tmp = 'true' if context.identity.isAdmin else 'false'  # molds\main.html:12
+AttributeError: 'Identity' object has no attribute 'isAdmin'
+
+
+=====2013-09-18 20:58:01=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\order.py", line 19, in get
+    self.render('order.html')
+  File "D:\Work\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\web.py", line 500, in render
+    html = self.render_string(template_name, **kwargs)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\web.py", line 607, in render_string
+    return t.generate(**namespace)
+  File "C:\Program Files\Python\lib\site-packages\tornado-2.4.1-py2.7.egg\tornado\template.py", line 261, in generate
+    return execute()
+  File "order_html.generated.py", line 17, in _execute
+    _tmp = 'true' if context.identity.isAdmin else 'false'  # molds\main.html:12
+AttributeError: 'Identity' object has no attribute 'isAdmin'
+
+
+=====2013-09-18 21:04:20=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2013-09-18 21:07:10=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2013-09-18 21:07:38=========================================
+
+Traceback (most recent call last):
+  File "D:\Work\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "D:\Work\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'

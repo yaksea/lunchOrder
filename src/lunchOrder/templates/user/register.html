@@ -1,0 +1,47 @@
+{% extends "../molds/blank.html" %}
+{% block head %} <script src="/static/js/page/user/register.js"></script>
+<style>
+</style>
+{% end %} {% block body %}
+<div>
+	<table id="form">
+		<tr>
+			<th>用户名：</th>
+			<td>
+			<input type="text" class="loginName">
+			</td>
+		</tr>
+		<tr>
+			<th>密码：</th>
+			<td>
+			<input type="password" class="passwords">
+			</td>
+		</tr>
+		<tr>
+			<th>再次输入密码：</th>
+			<td>
+			<input type="password" class="passwords1">
+			</td>
+		</tr>
+		<tr>
+			<th>姓名：</th>
+			<td>
+			<input type="text" class="realName">
+			</td>
+		</tr>
+		<tr>
+			<th>邮箱：</th>
+			<td>
+			<input type="text" class="email">
+			</td>
+		</tr>
+		<tr>
+			<th>手机：</th>
+			<td>
+			<input type="text" class="mobile">
+			</td>
+		</tr>
+	</table>
+	<button id="btnSubmit">注册</button>
+</div>
+{% end %} 

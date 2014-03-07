@@ -1,0 +1,47 @@
+{% extends "molds/frame.html" %}
+{% block body %}
+	
+	<div>
+		collection:<input type="text" id="collection"></input>
+		<select id='operation'>
+			<option value='insert'>增加</option>
+			<option value='remove'>删除</option>
+			<option value='update' selected="selected">修改</option>
+			<option value='find'>查询</option>
+		</select>
+	</div>
+	
+	<table style="width:100%"><tr><td width="50%"><textarea style="width:100%" id='query' rows="12">{ '_id':'xxxxxx' }</textarea>
+	</td>
+	<td width="50%"><textarea style="width:100%" id='update' rows="12">{ '$set':{'字段名':'新值'} }</textarea>		
+	</td></tr></table>
+		
+		
+	<div>
+	<button style="float:right" onclick='execute()'>执行操作</button>
+	<textarea id='result' rows="30"  style="width:90%"></textarea>
+	</div>
+	
+	<script>
+		
+		function execute(){
+			var collection = $('#collection').val()
+			var operation = $('#operation').val()
+			var query = $('#query').val()
+			var update = $('#update').val()
+			if (operation != 'find'){
+				if (!confirm('确定执行?')){
+					return	
+				}
+			}
+			$.post("/mongodb/execute",{collection:collection,operation:operation,query:query,update:update},
+			  function(result){
+				eval("var result="+result);
+			    $("#result").val(result.message);
+			  });
+		}
+
+		
+	</script>
+	
+{% end %}

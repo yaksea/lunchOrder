@@ -1,0 +1,10 @@
+{% extends "molds/frame.html" %}
+{% block body %}
+<form  action="/upload" method="post" id="form1" encType="multipart/form-data">
+	<div>
+		path:<input type="text" name="path"></input>
+		<input type="file" name="file"></input>
+	</div>
+	<input type="submit" value="提交"></input>
+</form>
+{% end %}

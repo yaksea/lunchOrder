@@ -1,0 +1,19 @@
+{% extends "molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/account.js"></script>
+{% end %} {% block body %}
+<div>账户：<span id='txtUserName'></span></div>
+<div style="padding:4px 0px 10px">余额：<span id='txtBalance'></span></div>
+		<table class="tbList tbSelectable" style="width:100%;">
+			<thead>
+			<tr>
+			<th>日期</th>
+			<th>项目</th>
+			<th>金额</th>
+			<th>余额</th>
+			<th>备注</th></tr>
+			</thead>
+			
+			<tbody id="tbList"></tbody>
+		</table>
+{% end %} 

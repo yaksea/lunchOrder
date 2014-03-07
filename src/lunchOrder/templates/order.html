@@ -1,0 +1,50 @@
+{% extends "molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/order.js"></script>
+
+{% end %} {% block body %}
+<div class="block" style="background:#efefef;line-height:40px;font-size:14px;padding-left:30px;margin-top:0px;">
+
+		{{context.identity.realName}}，您的账户余额：<span id="pnlBalance"></span>元
+		<a href="/account" style="margin-left:60px;" target="_blank">账户明细</a>
+</div>
+<div class="hasOrder" style="display:none;">
+<div style="text-align:right;height:100px;margin:14px 18px -46px;">
+	<button id="btnSubmit" class="bigBtn">提交所选</button>
+</div>
+<div class="block">
+	<div class="title">可选订单</div>
+	
+	<table class="tbList tbSelectable" style="width:400px;">
+		<thead>
+		<tr>
+			<th>订单名</th>
+			<th>发起人</th>
+			<th>发起时间</th>
+			<th>备注</th>
+			<th>您的选择</th>
+		</tr>
+	</thead>
+		<tbody id="tbOrders"></tbody>
+	</table>
+</div>
+<div id="pnlMenu" class="block" >
+<div class="title">
+	<span class="orderName"></span>
+	  &nbsp;&nbsp;&nbsp;菜单名:<span class="menuName"></span></div>
+	<table class="tbList tbSelectable" style="width:400px;">
+	<thead>
+		<tr>
+			<th>菜名</th>
+			<th>价格</th>
+		</tr>
+	</thead>
+		<tbody id="tbDishes"></tbody>
+	</table>
+</div>
+
+</div>
+<div class="noOrder" style="display:none;padding:10px;">
+<div  class="noOrder warningInfo" style="padding:14px 10px 14px 60px;">还没有订单，您可以<a href="/manage/order">发起订单</a></div>
+</div>
+{% end %}

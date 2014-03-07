@@ -1,0 +1,17 @@
+{% extends "molds/frame.html" %} {% block head %}
+<script type="text/javascript" src="/static/js/highstock.js"></script>
+<script type="text/javascript" src="/static/js/app/report.js"></script>
+{% end %}
+{% block body %}
+
+<div style="text-align:right;padding:20px 40px 0px 0px;">
+<select name="" id="ddlType" style="line-height:22px;font-size:14px; padding:4px;width:220px;border:solid 1px #888;">
+	<option value="Users">总用户数</option>
+	<option value="Source">用户来源</option>
+	<option value="Organization">组织</option>
+	<option value="ActiveUsers">活跃用户</option>
+</select>
+</div>
+<div id="container" style='height:700px;'></div>
+{% end %}
+

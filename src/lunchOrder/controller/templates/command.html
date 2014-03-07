@@ -1,0 +1,24 @@
+{% extends "molds/frame.html" %}
+{% block body %}
+
+	<div>		
+		<textarea id='cmd' rows="8" style="width:90%"></textarea>
+		<button style="float:right" onclick='execute()'>执行操作</button>	
+	</div>
+	<div>		
+		<textarea id='result' rows="30"  style="width:100%"></textarea>
+	</div>
+	
+	<script>
+	function execute(){
+		var cmd = $('#cmd').val()
+		$.post("/command/execute",{cmd:cmd},
+		  function(result){
+			eval("var result="+result);
+		    $("#result").val(result.message);
+		  });
+	}
+		
+	</script>
+	
+{% end %}

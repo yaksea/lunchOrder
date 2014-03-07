@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src='/static/js/base/jquery-1.7.2.js'></script>
+<script src='/static/js/base/jquery_extend.js'></script>
+
+<script src="/static/js/component/draggable.js"></script>
+<script src="/static/js/component/calendar.js"></script>
+<script src="/static/js/component/droppable.js"></script>
+<script src="/static/js/component/resizable.js"></script>
+<script src="/static/js/component/linkbutton.js"></script>
+<script src="/static/js/component/panel.js"></script>
+<script src="/static/js/component/window.js"></script>
+<script src="/static/js/component/dialog.js"></script>
+<script src="/static/js/component/messager.js"></script>
+<script src="/static/js/component/form.js"></script>
+<script src="/static/js/component/numberbox.js"></script>
+<script src="/static/js/component/validatebox.js"></script>
+<script src="/static/js/component/combo.js"></script>
+<script src="/static/js/component/combobox.js"></script>
+<script src="/static/js/component/datebox.js"></script>
+<script src="/static/js/component/datetimebox.js"></script>
+<script src="/static/js/component/parser.js"></script>
+<script src="/static/js/component/messagelabel.js"></script>
+<script src="/static/js/component/tooltip.js"></script>
+<script src="/static/js/component/placeholder.js"></script>
+
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+
+<link href="/static/css/component/spinner.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/calendar.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combo.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combopicker.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/combobox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/datagrid.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/datebox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/dialog.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/linkbutton.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/messager.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/panel.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/tooltip.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/validatebox.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/window.css" rel="stylesheet" type="text/css" />
+<style>
+	dd>label{
+		font-size:14px;
+	}
+	dd{
+		line-height:26px;
+		padding:11px 0px;
+	}
+	dd input{
+		border:solid 1px #ccc;
+		width:280px;
+		height:26px;
+	}
+	
+</style>
+</head>
+<body style="background:#dfdfdf;width:100%;padding:10px 0px 0px;margin:0px;">
+	<div align="center" style="padding-top:200px;">
+	{% if context.params['error'] %}
+	<div>用户名或密码错误。</div>
+	{%end%}
+		<div style="background: #fff; width: 400px; text-align: left; height: 240px; padding: 40px 40px 50px; border: solid 1px #bbb;">
+			<form action="" method="post">
+				<dl style="height:140px;padding-top:15px;">
+					<dd><label for="">工号：</label><input type="text" name="loginName" /></dd>
+					<dd><label for="">密码：</label><input type="password" name="passwords" /></dd>
+				</dl>
+				<div  align="center">
+				<input type="submit" class="bigBtn" value="登  录 " />
+				<a href="/user/register">注册</a>
+				</div>
+			</form>
+	
+
+		</div>
+	</div>
+</body>
+</html>
