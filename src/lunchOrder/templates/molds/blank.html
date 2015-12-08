@@ -3,9 +3,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>一起叫餐吧</title>
+<meta content="" name="description">
+
+<link rel='icon' href='/static/images/favicon.ico' type='image/x-icon' />
+<link rel='shortcut icon' href='/static/images/favicon.ico' type='image/x-icon' />
+
+{% import lunchOrder %}
+{% if lunchOrder.settings.ENVIRONMENT['production'] %}
+<script src='/static/js/base/jquery-1.7.2.min.js'></script>
+<script src="/static/dist/js/base.min.js"></script>
+<script src="/static/dist/js/component.min.js"></script>
+<link href="/static/dist/css/component.min.css" rel="stylesheet" type="text/css" />
+{%else%}
+<script src='/static/js/base/js_extension.js'></script>
 <script src='/static/js/base/jquery-1.7.2.js'></script>
 <script src='/static/js/base/json2.js'></script>
 <script src='/static/js/base/jquery_extend.js'></script>
+<script src='/static/js/base/ZeroClipboard.min.js'></script>
+<script src='/static/js/base/jquery.dotdotdot.min.js'></script>
 
 <script src="/static/js/component/draggable.js"></script>
 <script src="/static/js/component/calendar.js"></script>
@@ -27,16 +43,12 @@
 <script src="/static/js/component/messagelabel.js"></script>
 <script src="/static/js/component/tooltip.js"></script>
 <script src="/static/js/component/placeholder.js"></script>
-<script src="/static/js/component/easyui-lang-zh_CN.js"></script>
-
-<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
 
 <link href="/static/css/component/spinner.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/calendar.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combo.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combopicker.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combobox.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/datagrid.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/datebox.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/dialog.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/linkbutton.css" rel="stylesheet" type="text/css" />
@@ -45,28 +57,16 @@
 <link href="/static/css/component/tooltip.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/validatebox.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/window.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/dropdownMenu.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/numberAdjust.css" rel="stylesheet" type="text/css" />
+{%end%}
 
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/static/icomoon/style.css" rel="stylesheet" type="text/css" />
 
 {% block head %} {% end %}
-<style>
-	dd>label{
-		font-size:14px;
-	}
-	dd{
-		line-height:26px;
-		padding:11px 0px;
-	}
-	dd input{
-		border:solid 1px #ccc;
-		width:280px;
-		height:26px;
-	}
-	
-</style>
 </head>
-<body style="background:#dfdfdf;width:100%;padding:10px 0px 0px;margin:0px;">
-	<div align="center" style="padding-top:200px;">
+<body style="background:#dfdfdf;width:100%;padding:0px 0px 0px;margin:0px;">
 	{% block body %} {% end %}
-	
 </body>
 </html>

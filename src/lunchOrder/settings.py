@@ -6,14 +6,9 @@ Created on 2012-2-8
 import os,sys
 from lunchOrder.common.tnd import uiModules
 
-VERSION = {
-           'server': '0.1.0',
-           'android': {'version':'0.1.0', 'url':'http://lunchOrder.91.com/static/phone/91rm_android_V1_2_3_278781_2.apk'},
-           'iphone': {'version':'0.1.000', 'url':'http://lunchOrder.91.com/static/phone/91rm(iPhone)v0.1.000.Beta.278521.ipa'},
-           }
-
 
 ENVIRONMENT = {
+               'env':'pro',
                'production' : True,
                'test' : False,
                'dev' : False               
@@ -25,25 +20,12 @@ APP = {
        }
 
 
+EMAIL = {
+            'host': 'smtp.17j38.com',
+            'user' : 'admin@17j38.com',
+            'password':'a6l$eX1IJ38'
 
-OAP_CLIENT = {
-            'apiUrl': 'http://oapnd.91.com'
-            }
-
-INTERNAL_POINTS = {
-            'apiUrl': 'http://nderp.91.com/Ajax'
-            }
-
-UAP = {
-            'apiUrl': 'http://uap.91.com',
-            'loginUrl':"http://reg.uap.91.com/uaplogin/login.php",
-            'registerUrl': "http://reg.uap.91.com/uaplogin/register.php",
-            'appId': "56c4c51629",
-#            'appId': "101",
-#            'appId_new': "56c4c51629",
-             'apiKey': "Rxlv66haVpRrJ5eAllZClJvkuxppopoRD1RD1JKl",
-             'cookieDomain' : '.91.com'
-            }
+       }
 
 
 SESSION = {  
@@ -58,20 +40,11 @@ SESSION = {
 
 CACHE = {
                   'unit_expires': 0,
-                  'session_expires': 20 * 60, #20 minutes
+                  'session_expires': 60 * 60, #20 minutes
 #                  '_expires': 20 * 60, #20 minutes
-                  'clients' : ['121.199.59.30:11211'],
+                  'clients' : ['203.195.205.213:11211'],
                   }
 
-MESSAGE_QUEUE = {
-                    'host':'121.207.247.199',
-                    'userid':'guest', 
-                    'password':'guest', 
-                    'ssl':False,
-                    'virtualHost': '/',
-                    'exchange' : 'CRM'
-                 
-                 }
 
 PATH = {
         'root' : os.path.dirname(__file__),
@@ -82,22 +55,22 @@ PATH = {
         }
 
 
-# DB = {
-# 
-#         'host' : '121.199.59.30',
-#         'port': 27017,
-#         'db_name' : 'lunchOrder',
-#         'user_name' : 'alex',
-#         'passwords' : 'alkdjiueaj'
-# 
-#       }
-
 DB = {
-        'host' : '192.168.19.184',
+        'host' : '203.195.205.213',
+#         'host' : '182.254.211.11',
         'port': 27017,
-        'db_name' : 'lunchOrder'
+        'db_name' : 'lunchOrder_pro',
+        'user_name' : 'alex',
+        'passwords' : 'alkdjiueaj',
+        'admin_account': True
       }
 
+REDIS = {
+         'host': '203.195.205.213',
+         'port':6379,
+         'password':'$DSF&%bfg%23',
+         'db':1
+         }
 
 TND = {
     "ui_modules": uiModules,       

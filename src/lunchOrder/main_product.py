@@ -15,7 +15,9 @@ from tornado.options import options, define
 from lunchOrder.common.tnd.application import Application
 from lunchOrder.base.handlers.baseHandler import BaseRequestHandler
 import sys
+from lunchOrder.controller import main as controllerMain 
 from lunchOrder.handlers import default
+import commands
 reload(sys)
 sys.setdefaultencoding('utf8') 
 
@@ -69,10 +71,17 @@ def __buildHandlers(handlers, path):
 application = Application(getHandlers(), 
                                       debug=False, **settings.TND)
 
+application = Application(getHandlers(), 
+                                      debug=False, **settings.TND)
+
 define("port", default=8026, help="Run server on a specific port", type=int) 
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
-    http_server = tornado.httpserver.HTTPServer(application, xheaders=True)
-    http_server.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+    if options.port == 89:
+        if not commands.getoutput('netstat -tln | grep %s'%options.port):
+            controllerMain.run(options.port)
+    else:
+        http_server = tornado.httpserver.HTTPServer(application, xheaders=True)
+        http_server.listen(options.port)
+        tornado.ioloop.IOLoop.instance().start()

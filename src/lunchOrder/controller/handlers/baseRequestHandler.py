@@ -16,7 +16,7 @@ def secure(method):
     def wrapper(self, *args, **kwargs):  
         
         if settings.ENVIRONMENT['production']:    
-            if self.get_cookie('secure_key') != 'toukandaimashiwugui':
+            if self.get_cookie('secure_key') != 'tOu~kAn!dAi@mA#4$5%gUi^':
                 self.send_error(404)
                 return
                 

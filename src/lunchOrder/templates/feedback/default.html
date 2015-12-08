@@ -1,0 +1,55 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/feedback/default.js"></script>
+<style>
+	#txtContent{
+		width: 660px;
+		height:180px;
+		border:solid #999 1px;
+		font-size:14px;
+		line-height: 20px;
+	}
+	#ulList{
+		padding:0px;
+		margin:0px;
+	}
+	#ulList ul{
+		padding:0px;
+		margin:0px;
+	}
+	#ulList li{
+		list-style-type: none;
+		padding:4px 6px;
+		line-height: 18px;
+		font-size:14px;
+	}
+	#ulList li.fb{
+		width: 648px;
+		margin:0px 0px 16px;
+		background:#efefef;
+		border:solid 1px #bbb;
+	}
+	#ulList li.reply{
+		margin:4px 0px;
+		border:dotted 1px #ccc;
+		background:#fff;
+	}
+	#ulList .createTime{
+		text-align:right; 
+		font-size: 12px;
+	}
+</style>
+{% end %} {% block body %}
+<div id="pnlPost">
+	<div>
+	<textarea id="txtContent" style="overflow-y:auto; " placeholder="感谢您的使用与关注，我们会认真采纳并回复您的建议。如果方便的话，请附上您的联系方式，以便我们与您取得联系。">
+	</textarea>
+	<div>
+	<button class="bigBtn" id="btnPost"> 提 交 </button>
+</div>
+<div id="pnlList" style="padding-top:20px;display:none;">
+	<div style="font-size:14px;line-height:24px;font-weight: bolder;">已收到您的建议共<span class="count"></span>条<span class="replied"></span>：</div>
+	<ul id="ulList"></ul>
+</div>
+
+{% end %} 

@@ -32,7 +32,6 @@
 			// ② value模拟，同时是支持placeholder属性的浏览器
 			// ③ label模拟，但是无需跨浏览器兼容，同时是支持placeholder属性的浏览器
 			if (!placeholder || (!params.labelMode && isPlaceholder) || (params.labelMode && !params.labelAcross && isPlaceholder)) { return; }
-
 			// 存储，因为有时会清除placeholder属性
 			element.data("placeholder", placeholder);
 			
@@ -46,11 +45,13 @@
 				
 				// 状态初始化
 				elementLabel = $('<label for="'+ idElement +'"></label>').css($.extend({
-					lineHeight: "1.3",
+					lineHeight: element.css('lineHeight'),
 					position: "absolute",
 					color: "graytext",
 					cursor: "text",
-					margin: "2px 0 0 3px"
+					margin: "2px 0 0 3px",
+					fontSize: element.css('fontSize'),
+					width: element.width()-2
 				}, params.labelStyle)).insertBefore(element);				
 				
 				// 事件绑定

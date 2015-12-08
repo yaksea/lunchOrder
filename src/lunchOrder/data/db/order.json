@@ -2,17 +2,21 @@
 	'_id' : "xxx", 
 	'groupId' : "xxx",
 	'name':'',//订单标题 
+	"orderType": 1, //1:快餐   2:小炒AA
 	'menuId':'',//菜单id
 	'status' : 1,//0：正在点餐中，1：已经订餐（停止点餐），2：已经结单，-1：已取消
 	'sum': {
 		'amount':200,//总金额
+		'count':4, //总份数
 		'dishCount':{
 			'dishId':4//数量
 		},
 		'dishes':[
 			{
 			'_id' : "xxx",
-			'name' : ''}
+			'name' : '',
+			'price': 100
+			}
 		]
 	}
 	

@@ -5,7 +5,7 @@
 <style>
 
 </style>
-
+<div id="cashBalance"></div>
 <table style="width:100%">
 	<tr>
 		<td style="width:660px" valign="top">
@@ -13,15 +13,16 @@
 			<thead>
 			<tr>
 			<th>姓名</th>
-			<th>工号</th>
+			<th>用户名</th>
 			<th>余额</th>
 			<th>操作</th></tr>
 			</thead>
 			
-			<tbody id="tbList"></tbody>
+			<tbody id="tbUserList"></tbody>
 		</table>
 </td>
 		<td style="width:200px" valign="top">
+			{% if context.identity.payment.get('byTurns') %}
 		<div style="width:100%;" class="warningInfo">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此处【充值】是指为他人充值，在进行此操作之前请确认对方已付您相应现金。
 			<br />
@@ -29,6 +30,7 @@
 			&nbsp;&nbsp;完成【充值】后，对方账上增加相应金额，同时在您账上扣减同等金额。
 		
 		</div>
+		{% end %}
 		</td>
 	</tr>
 </table>		
@@ -39,7 +41,7 @@
 	<table class="tbForm">
 		<tr><th>充值对象：</th><td><span class="name"></span></td></tr>
 		<tr><th>充值金额：</th><td><input type="text" name="amount"
-		class="easyui-component amount"  componentType="numberbox" precision="2" min="1"/></td></tr>
+		class="easyui-component amount"  componentType="numberbox" precision="2"/></td></tr>
 	</table>
 	<div style="padding:26px 24px 0px 20px">
 	<div class="warningInfo2">&nbsp;&nbsp;&nbsp;&nbsp;请确认<span class="name"></span>已付您相应现金。</div></div>
@@ -49,17 +51,4 @@
 	</div>
 </div>
 
-<div id="dlgEdit" style="display: none;  width: 480px; height: 220px;"
-	buttons=".dlgButtons">
-	<table class="tbForm">
-		<tr><th>工号：</th><td><input type="text" name="id" class="id"/></td></td></tr>
-		<tr><th>姓名：</th><td><input type="text" name="name" class="name"/></td></tr>
-		<tr><th>管理员：</th><td><input type="checkbox" name="isAdmin" class="isAdmin"/></td></tr>
-	</table>
-	
-	<div class='dlgButtons'>
-		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
-		<a class="easyui-component common save" componentType="linkbutton">确定</a>
-	</div>
-</div>
 {% end %} 

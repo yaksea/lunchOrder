@@ -1,74 +1,67 @@
-﻿$.extend($,{
-	postJSON: function( url, data, callback ) {
+﻿var ___getJSONCache = {};
+$.extend($,{
+	postJSON: function( url, data, callback, failure, settings ) {
 		if ( jQuery.isFunction( data ) ) {
+			settings = failure;
+			failure = callback;
 			callback = data;
 			data = undefined;
 		}
 
-		return jQuery.ajax({
+		return jQuery.ajax($.extend({
 			type: 'post',
 			url: url,
 			data: JSON.stringify(data),
 			dataType: 'json',
 			contentType: "application/json; charset=UTF-8",
-			success: function(returnData){
-//				var ret=$.doAjaxRet(returnData);
-//				if(ret.direct){
-//					//已跳转页面 不处理
-//				}
-//				else if(!ret){
-////					alert("&nbsp;",returnData.message);
-//				}
-//				else 
-				if(callback){
-					(callback)(returnData);	
+			success: function(data){
+				if(data.statusCode!=200 && failure){
+					failure(data);
+				}else if (data.statusCode!=200 && data.statusCode!=404){
+					alert(data.message);
+				}
+				else if(callback){
+					(callback)(data);	
 				}					
 			}
-		});
+		},settings||{}));
 	},
-	//增加了 statusCode的校验
-	getJSON: function( url, params, callback ) {
-		return jQuery.get(url, params, function(data){
-			var ret=$.doAjaxRet(data);
-			if(ret.direct){
-				//已跳转页面 不处理
-			}
-			else if(!ret){
-				alert("&nbsp;",data.message);
+	//增加了 statusCode的校验,pageCache:页面缓存
+	getJSON: function( url, params, callback, pageCache ) {
+		if ( jQuery.isFunction( params ) ) {
+			pageCache = callback;
+			callback = params;
+			data = undefined;
+		}		
+		
+		function _callback(data){
+			if (data.statusCode!=200 && data.statusCode!=404){
+				alert(data.message);
 			}
 			else if(callback){
 				(callback)(data);	
-			}
-		},"json");	
-	},
-
-	doAjaxRet:function(data){
-		if(data.statusCode){
-			if(data.statusCode==200)
-				return true;
-			if(data.statusCode==400){
-				//doErrorRedirect(data);
-				return false;
-			}
-			if(data.statusCode==409){
-				//doErrorRedirect(data);
-				return false;
-			}
-//			if(data.statusCode==401){
-//				doBackHome();
-//				return {direct:true};
-//			}
-//			if(data.statusCode==403||data.statusCode==404){
-//				doErrorRedirect(data.statusCode);
-//				return {direct:true};
-//			}
-			if(data.statusCode==500)
-				return false;
-			//其他情况返回true
-			return true;
+			}	
 		}
-		else
-			return true;
+		if(pageCache){
+			var key = JSON.stringify(params);
+			if(!___getJSONCache[url]){
+				___getJSONCache[url] = {};
+			}
+			var data = ___getJSONCache[url][key];
+			if(data){
+				return _callback(data);
+			}else{
+				return jQuery.get(url, params, function(data){
+					___getJSONCache[url][key] = data;
+					_callback(data);
+				},"json");
+			}
+		}
+		else{
+			return jQuery.get(url, params, function(data){
+				_callback(data);
+			},"json");
+		}
 	},
 	initEvent : function(e){
 		//firefox 下 绑定 srcElement=target
@@ -88,6 +81,10 @@
 	getDateString : function(str) {
 		if (str) {
 			var date = new Date(parseInt(str.substr(6)));
+			var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"
+					+ date.getDate();
+		}else{
+			var date = new Date();
 			var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-"
 					+ date.getDate();
 		}
@@ -122,6 +119,20 @@
 	getUrlParam : function(name) {
 		return $.getUrlParams()[name];
 	},
+	getUrlAnchors : function() {
+		var vars = [], hash;
+		var hashes = window.location.href.slice(
+				window.location.href.indexOf('#') + 1).split('&');
+		for ( var i = 0; i < hashes.length; i++) {
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	},
+	getUrlAnchor : function(name) {
+		return $.getUrlAnchors()[name];
+	},
 	removeFromArray : function(array, removeItem) {
 		return jQuery.grep(array, function(value) {
 			return value != removeItem;
@@ -149,7 +160,7 @@
 		var d = new Date();
 		var exp = new Date(d.getFullYear(), d.getMonth(), d.getDate());
 		exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-		document.cookie = name + "=" + escape(value) + ";expires="
+		document.cookie = name + "=" + escape(value) + ";domain=.17j38.com;path=/;expires="
 				+ exp.toGMTString();
 	},
 	// 读取cookies
@@ -168,11 +179,86 @@
 		if (cval != null)
 			document.cookie = name + "=" + cval + ";expires="
 					+ exp.toGMTString();
+	},
+	getUUID : function(){
+//		var str = new Date(); 
+//		str = str.getTime();
+//		return str;
+	    var d = new Date().getTime();
+	    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+	        var r = (d + Math.random()*16)%16 | 0;
+	        d = Math.floor(d/16);
+	        return (c=='x' ? r : (r&0x7|0x8)).toString(16);
+	    });
+	    return uuid;		
+	},
+	urlEncode: function(str){
+	   var ret="";
+	   var strSpecial="!\"#$%&'()*+,/:;<=>?[]^`{|}~%";
+	   for(var i=0;i<str.length;i++){
+	   var chr = str.charAt(i);
+	     var c=str2asc(chr);
+	     if(parseInt("0x"+c) > 0x7f){
+	       ret+="%"+c.slice(0,2)+"%"+c.slice(-2);
+	     }else{
+	       if(chr==" ")
+	         ret+="+";
+	       else if(strSpecial.indexOf(chr)!=-1)
+	         ret+="%"+c.toString(16);
+	       else
+	         ret+=chr;
+	     }
+	   }
+	   return ret;
+	},
+	urlDecode: function(zipStr){ 
+	    var uzipStr=""; 
+	    function _asciiToString(asccode){ 
+	    	return String.fromCharCode(asccode); 
+	    }
+	    for(var i=0;i<zipStr.length;i++){ 
+	        var chr = zipStr.charAt(i); 
+	        if(chr == "+"){ 
+	            uzipStr+=" "; 
+	        }else if(chr=="%"){ 
+	            var asc = zipStr.substring(i+1,i+3); 
+	            if(parseInt("0x"+asc)>0x7f){ 
+	                uzipStr+=decodeURI("%"+asc.toString()+zipStr.substring(i+3,i+9).toString()); 
+	                i+=8; 
+	            }else{ 
+	                uzipStr+=_asciiToString(parseInt("0x"+asc)); 
+	                i+=2; 
+	            } 
+	        }else{ 
+	            uzipStr+= chr; 
+	        } 
+	    } 
+	 
+	    return uzipStr; 
+	},
+	returnBack: function(defaultUrl){
+//		console.info(document.referrer);
+//		console.info($.urlDecode($.getUrlParam('returnUrl') || defaultUrl || document.referrer || '/'));
+		location.href = $.urlDecode($.getUrlParam('returnUrl') || defaultUrl || document.referrer || '/');
 	}
+	 
 });
+
+
+
 (function($) {
+	if(!Object.keys)
+	{
+	  Object.keys = function(obj)
+	  {
+	    return $.map(obj, function(v, k)
+	    {
+	      return k;
+	    });
+	  };
+	 }
 	$.fn.findParent = function(expr) {
 		var parents = this.parentsUntil(expr);
 		return $(parents[parents.length - 1]).parent();
-	}
+	}	
 })(jQuery);

@@ -1,0 +1,184 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/group/admin.js"></script>
+<style>
+    #headInfo{
+    	background: #f9f9f9;
+    	padding:10px 0px 0px 10px;
+    	height: 68px;
+    }
+    
+	#divTabs{
+    	background: #f9f9f9;
+		padding:0px;
+		padding-top:12px;
+		padding-left:48px;
+		border-bottom:solid 1px #aaa;
+		height: 35px;
+		display:block;
+		vertical-align: bottom;
+		margin:0px;
+	}
+	#divTabs li{
+		vertical-align: bottom;
+		font-size:12px;
+		height: 34px;
+		line-height: 34px;
+		width: 80px;
+		float: left;
+		list-style-type: none;
+		text-align: center;
+		border-top: solid 1px #aaa;
+		border-left: solid 1px #aaa;
+		border-right: solid 1px #aaa;
+		cursor:pointer;
+		background: #f8f8f8;
+		margin-left:2px;
+	}
+	#divTabs li.selected{
+		height: 35px;
+        line-height: 35px;
+        background: #fff;
+        font-weight: bolder;     
+	}
+	#divTabs li.selected:hover{
+        background: #fff;
+	}
+	#divTabs li:hover{
+		background: #E5F0F6;
+	}
+    #pnlBody{
+    	padding: 20px;
+    }
+    .address, .brief{
+        width:400px;
+    }
+    .brief{
+        height:80px;
+    }
+    .tbForm .isAdmin, .tbForm .remarkName{
+    	width:auto;
+    }
+    .pnlNoAudit{
+        border: solid 1px #ccc;
+        background: #F6F6F6;
+        display:inline;
+        padding: 2px 20px;
+        color:#669900;
+    }
+    textarea{
+    	font-size: 12px;
+    }
+</style>
+{% end %} {% block body %}
+<div id="headInfo">
+	<div>
+		<span class="name" style="font-size: 20px; font-weight: bolder; line-height: 40px;height: 40px;">
+			
+		</span>
+		<span class="users" style="">
+			
+		</span>人
+		{% if 'founder' in context.identity.roles %}<span style="float: right;"><span class="redBlock" style="display:none;">无法解散。只有当所有成员的账户余额都为0时，方可解散群组。</span><a id="btnDismiss" href="javascript:void(0)">解散该群</a></span>{% end %} 
+	</div>
+	<div style="font-size: 12px; line-height: 28px; color:#ff0000;">
+		支付规则：<span class="payment" ></span>
+	</div>
+</div>
+<ul id="divTabs">
+	<li class="selected">
+		群资料
+	</li>
+	<li>
+		群推广
+	</li>
+	<li>
+		申请确认
+	</li>
+	<li>
+		成员管理
+	</li>
+</ul>
+<div id="pnlBody">
+	<div>
+		  <table class="tbList tbSelectable" style="width:100%;" id="form">
+            <tr>
+                <th>地 址<font style="color:red">*</font>：</th>
+                <td><input type="text" class="address" maxlength="50" /></td>
+            </tr>
+            <tr>
+                <th>群介绍：</th>
+                <td><textarea class="brief"></textarea></td>
+            </tr>
+            <tr>
+                <th>开放免审：</th>
+                <td style="text-align: left;"><input type="checkbox" name="noAudit" class="noAudit"/>
+                <span class="pnlNoAudit">允许任何人加入该群，无需经过审核。</span></td>
+            </tr>
+        </table>
+        <div style="padding-top: 40px;">
+        	<button class="midBtn" id="btnSubmit"> 保 存 </button>
+        </div>
+	</div>
+	<div class="pnlSpread" style="display:none;">
+		<div class="warningInfo" style="padding:14px 10px 14px 60px;margin-top: 14px;margin-bottom: 45px;">可以将以下推广地址公布出去，其他人即可通过该地址提交加群申请。</div>
+		推广地址：<input type="text" id="spreadUrl" value="http://{{context.request.host}}?groupId={{context.identity.groupId}}" readonly="true" style="width: 400px;"/>
+		<a href="javascript:void(0)" class="copy"  data-clipboard-target="spreadUrl">复制</a>
+	</div>
+	<div class="" style="display:none;">
+		<div class="noApply warningInfo" style="padding:14px 10px 14px 60px;display:none;">还没有收到加群申请，快去推广吧。</div>
+		<div class="listApply" style="display:none;">
+		  <table class="tbList tbSelectable" style="width:100%;">
+            <thead>
+            <tr>
+                <th>申请人</th>
+                <th>申请理由</th>
+                <th>申请时间</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbApplyList"></tbody>
+        </table>
+        </div>
+	    <div id="dlgReject" style="display: none; width: 480px; height: 220px;"
+	    buttons=".dlgButtons">
+		    <table class="tbForm">
+		        <tr><th>拒绝理由：</th><td><input type="text" name="reply" class="reply" /></td></tr>
+		    </table>
+		    <div class='dlgButtons'>
+		        <a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		        <a class="easyui-component common save" componentType="linkbutton">确定</a>
+		    </div>
+	    </div>        
+	</div>
+	<div class="" style="display:none;">
+		<table class="tbList tbSelectable" style="width:100%;">
+            <thead>
+            <tr>
+	            <th>姓名</th>
+	            <th>用户名</th>
+	            <th>余额</th>
+	            <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="tbUserList"></tbody>
+        </table>
+		<div id="dlgEdit" style="display: none;  width: 480px; height: 220px;"
+		    buttons=".dlgButtons">
+		    <table class="tbForm">
+		        <tr><th>用户名：</th><td><span class="id"></span></td></td></tr>
+		        <tr><th>姓名：</th><td><span class="name"></span></td></tr>
+		        <tr><th>备注名：</th><td><input type="text" name="remarkName" class="remarkName"/></td></tr>
+		        <tr><th>设为管理员：</th><td style="text-align: left;"><input type="checkbox" name="isAdmin" class="isAdmin"/></td></tr>
+		    </table>
+		    
+		    <div class='dlgButtons'>
+		        <a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		        <a class="easyui-component common save" componentType="linkbutton">确定</a>
+		    </div>
+		</div>        
+	</div>
+</div>
+
+{% end %} 

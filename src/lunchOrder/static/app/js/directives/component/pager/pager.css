@@ -1,0 +1,120 @@
+.pager{
+    height:80px;
+    line-height:80px;
+    vertical-align: middle;
+}
+.pager .pager-block{
+    vertical-align:middle;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+.pager div.pager-list {
+    margin: 0px 6px;
+    padding:0px;
+    border-right:solid 1px #dfdfdf;
+    height:36px;
+    line-height:36px;
+}
+.pager .pager-controls{
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+.pager .pager-total{
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    width:90px;
+    
+}
+.pager div.pager-list div {
+    padding:0px;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    height: 36px;
+    line-height:34px;
+    background:#fff;
+    border: solid 1px #dfdfdf;
+    width:36px;
+    border-right:0px;
+    margin: 0px;
+    text-align:center;
+    color: #444;
+    cursor: pointer;
+}
+
+.pager div.pager-list div.selected {
+    background: #BADCFB;
+    border: solid 1px #0C5AA5;
+    color: #111;
+}
+
+.pager div.pager-list div:hover {
+    background: #D8EBFC;
+    color: #111;
+}
+
+.pager .pager-prev, .pager .pager-next{
+    height: 36px;
+    line-height: 1.5;
+    background:#fff;
+    border: solid 1px #dfdfdf;
+    width:60px;
+    margin: 0px;
+    padding:0px;
+    text-align:center;
+    color: #444;
+    cursor: pointer;  
+}
+
+.pager .pager-prev:hover,  .pager .pager-next:hover{
+    background: #D8EBFC;
+    color: #111;
+}
+
+.pager .pager-prev.disabled, .pager .pager-prev[disabled],
+.pager .pager-next.disabled, .pager .pager-next[disabled]
+{
+    color: #aaa;    
+    cursor:text;
+}
+.pager .pager-prev.disabled:hover, .pager .pager-prev[disabled]:hover,
+.pager .pager-next.disabled:hover, .pager .pager-next[disabled]:hover
+{
+    background:#fff;
+    color: #aaa;    
+    cursor:text;
+}
+
+
+.pager .pager-split {
+    margin-left:20px;
+    margin-right:10px;
+    border: solid 1px #dfdfdf;
+    height: 36px;
+    line-height: 36px;
+    padding-left:3px;
+    vertical-align: baseline;
+}
+.pager .pager-split input{
+    border: solid 1px #dfdfdf;
+    line-height: 1.2;
+    width:26px;
+    background: #eee;
+    text-align:right;
+    vertical-align: baseline;
+}
+
+.pager .pager-split input:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+    background: #fff;
+    color:#000;
+}
+
+
+
+

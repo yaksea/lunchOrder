@@ -13,11 +13,11 @@
 	$.MessageLabel = function() {
 		this.text = "";
 		var iebrws=document.all;
-		this.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
-		this.panel = $("<div style='border:solid 1px #CCC; z-index:999999; background:yellow; padding:2px 20px;'/>").appendTo($("body"));
+		this.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest; //not IE or IE7+ browsers in standards mode
+		this.panel = $("<div style='border:solid 1px #CCC; z-index:100000000; background:yellow; padding:6px 40px;'/>").appendTo($("body"));
 		this.panel.css({position:this.cssfixedsupport? 'fixed' : 'absolute'});
 		if (this.cssfixedsupport){
-			this.panel.css({top: '0px', right : '0px'});
+			this.panel.css({top: '40px', right : '50%'});
 		}
 		this.showing = false;
 	};
@@ -45,7 +45,7 @@
 			}, 3000);
 			
 		}
-	}
+	};
 
 	$.messagelabel = {
 		show : function(text) {
@@ -54,6 +54,6 @@
 			}
 			messageLabel.show(text);
 		}
-	}
+	};
 
 })(jQuery);

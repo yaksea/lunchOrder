@@ -10,11 +10,20 @@
 		'name' : ''
 	
 	},
-	'dish' : {
-		'_id' : "xxx",
-		'name' : '',
-		'price':10// 价格
-	},
+	'sum': {
+		'amount':200,//总金额
+		'count':4, //总份数
+		'dishCount':{
+			'dishId':4//数量
+		},
+		'dishes':[
+			{
+			'_id' : "xxx",
+			'name' : '',
+			'price':10// 价格
+			}
+		]
+	}	
 	
 	'createTime':'',// 创建时间
 	'createTimestamp':''// 时间戳

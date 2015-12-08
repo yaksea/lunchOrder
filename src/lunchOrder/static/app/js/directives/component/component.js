@@ -1,0 +1,1 @@
+var mComponent = angular.module('component.directives', []);

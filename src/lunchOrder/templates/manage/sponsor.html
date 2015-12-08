@@ -1,0 +1,124 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/manage/sponsor.js"></script>
+<style>
+	#menuList{
+		overflow:hidden;
+		zoom:1;
+		display:block;
+	}
+	.menuBlock{
+        border:solid 1px #999;
+        border-bottom:solid 1px #666;
+        border-right:solid 1px #666;
+		float:left;
+		margin: 6px 14px;
+		min-width:290px;
+		min-height:155px;
+		display:block;
+	    -webkit-box-shadow:4px 3px 4px #999;
+	    box-shadow: 4px 3px 4px #999;			
+	}
+	.menuBlock:hover {
+		cursor:pointer;
+		background: #F0F7FE;
+	}
+	.orderType{
+		border:solid 1px #aaa;
+		background:#ddd;
+		text-align:center;
+		float:left;
+		font-size:28px;
+		font-weight:bold;
+		margin: 18px;
+		min-width:260px;
+		min-height:260px;
+		line-height:260px;
+		display:block;
+	}
+    .orderType:hover {
+	    cursor:pointer;
+	    background: #F0F7FE;
+    }
+    .createMenu{
+    	line-height:260px;
+    	font-size:28px;
+    	text-align:center;
+    }
+	.menuBlock .head{
+		border-bottom:solid 1px #ddd;
+		margin: 0px 6px;
+		padding: 8px 8px;
+	}
+	.menuBlock .list{
+		padding: 8px 8px;
+		min-height:80px;
+	}
+</style>
+{% end %} {% block body %}
+
+<div id="navPath" style="display: none;">
+	<a href="javascript:void(0)">选择点餐类型</a> --> 选择菜单
+</div>
+
+<div id="dlgCreateOrder" style="display: none; width: 480px; height: 220px;"
+	buttons=".dlgButtons">
+	<table class="tbForm">
+		<tr><th>订单名：</th><td><input type="text" name="name" class="name" /></td></tr>
+		<tr><th>备注：</th><td><input type="text" name="note"  class="note"/></td></tr>
+	</table>
+	<div class='dlgButtons'>
+		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		<a class="easyui-component common save" componentType="linkbutton">确定发起</a>
+	</div>
+</div>
+
+<div id="view1">
+	<div class="orderType" id="orderType1">快餐</div>
+	<div class="orderType" id="orderType2">小炒AA</div>
+</div>
+
+<div id="view2" style="display:none;">
+	<div style="text-align:right;line-height: 60px;">
+		<a href="javascript:void(0)" id="btnCreateMenu" class="linkBtn2">新建菜单</a>
+		<a href="/menu" target="copyMenu" class="linkBtn2">从其他群复制菜单</a>
+	</div>
+<div>
+	<table cellpadding="0px" cellspacing="0px">
+		<tr id="menuList">
+			<td valign="top" style="width:33.3%"></td>
+			<td valign="top" style="width:33.3%"></td>
+			<td valign="top" style="width:33.3%"></td>
+		</tr>
+	</table>
+</div>
+
+<div id="dlgEditMenu" style="display: none; width: 480px; height: 220px; "
+	buttons=".dlgButtons">
+	<table class="tbForm">
+		<tr><th>菜单名：</th><td><input type="text" name="name" class="name" /></td></tr>
+		<tr><th>电话：</th><td><input type="text" name="phone"  class="phone"/></td></tr>
+		<tr><th>地址：</th><td><input type="text" name="address"  class="address"/></td></tr>
+	</table>
+	
+	<div class='dlgButtons'>
+		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		<a class="easyui-component common save" componentType="linkbutton">确定</a>
+	</div>
+</div>
+<div id="dlgEditDish" style="display: none; width: 480px; height: 220px;"
+	buttons=".dlgButtons">
+	<table class="tbForm">
+		<tr><th>菜名：</th><td><input type="text" name="name" class="name" /></td></tr>
+		<tr><th>价格：</th><td><input type="text" name="price" id="txtPrice"
+		class="easyui-component price"  componentType="numberbox" precision="2" /></td></tr>
+	</table>
+	<div class='dlgButtons'>
+		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		<a class="easyui-component common save" componentType="linkbutton">保存[enter]</a>
+		<a class="easyui-component common continue" componentType="linkbutton">保存并继续[ctrl+enter]</a>
+	</div>
+</div>
+</div>
+
+{% end %} 

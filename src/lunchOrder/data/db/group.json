@@ -1,7 +1,30 @@
 {
 	'_id' : 123,
 	'name' : '',//团名
-	'workUnit':'单位名称',//
 	'address' : '',//地址
-	'phone':'联系电话'
+	"payment": {
+		"clear": 1, //0:不定期结算；1:每次结清，如选此项则无下字段
+		"byTurns": 0, //0:指定人员统一管理饭钱， 1：轮流付饭钱
+	},
+	"users": 100 //当前用户数
+	'founder':{
+		'_id':'',
+		'userId':'',
+		'realName':'',
+	},
+	'admins':[
+		{
+		'_id':'',
+		'userId':'',
+		'realName':'',
+		},
+		{
+		'_id':'',
+		'userId':'',
+		'realName':'',
+		},
+	],
+	'isPublic':1 //1：公开；0：不公开
+	'noAudit':1 //1：开放免审；0：人工审核
+	
 }

@@ -1,50 +1,134 @@
 {% extends "molds/main.html" %} 
 {% block head %}
 <script src="/static/js/page/order.js"></script>
+<style>
+   #tbDishes .cart{
+   		font-family:icomoon;
+   	    color:#bbb;
+   	    font-size:18px;
+   	    text-decoration: none;
+   	    vertical-align: middle;
+   	    padding:10px 30px;
+   }
+   #tbDishes .cart:hover{
+   	    color:#FF9900;
+   }
 
+   .tbList td{
+   	    height: 30px;
+   }
+
+</style>
 {% end %} {% block body %}
 <div class="block" style="background:#efefef;line-height:40px;font-size:14px;padding-left:30px;margin-top:0px;">
-
-		{{context.identity.realName}}，您的账户余额：<span id="pnlBalance"></span>元
+		我的账户余额：<span id="pnlBalance"></span>元
 		<a href="/account" style="margin-left:60px;" target="_blank">账户明细</a>
 </div>
 <div class="hasOrder" style="display:none;">
-<div style="text-align:right;height:100px;margin:14px 18px -46px;">
-	<button id="btnSubmit" class="bigBtn">提交所选</button>
+<div class="block" id="pnlOrderList" style="border: 1px solid #ffea24;padding-left:30px;margin-top:0px;display: none;">
+    <b>我的订单：</b>
+        <table class="tbList tbHover">
+            <thead>
+                <tr>
+                    <th style="min-width:60px;">类型</th>
+                    <th style="min-width:120px;">活动名称</th>
+                    <th style="min-width:120px;">菜名</th>
+                    <th style="width:100px;">价格</th>
+                    <th style="width:80px;">数量</th>
+                    <th style="width:80px;">小计</th>
+                </tr>
+            </thead>
+            <tbody id="tbDetails"></tbody>
+        </table>
+</div>
+<div id="pnlSteps" style="border: 1px solid #ffea24;background:#FFFEF5;font-size: 12px;line-height: 34px;margin: 0px 10px;padding:0px 30px;">
+	还没提交订单，可按以下步骤提交订单：[1.选择饭事]->[2.编辑我的订单]->[3.提交订单]
 </div>
 <div class="block">
-	<div class="title">可选订单</div>
+	<div class="title">Step 1: 选择饭事</div>
 	
-	<table class="tbList tbSelectable" style="width:400px;">
+	<table class="tbList tbSelectable" style="width:800px;">
 		<thead>
 		<tr>
-			<th>订单名</th>
-			<th>发起人</th>
-			<th>发起时间</th>
+			<th style="width:60px;">类型</th>
+			<th>活动名称</th>
+			<th style="width:90px;">发起人</th>
+			<th style="width:140px;">发起时间</th>
 			<th>备注</th>
-			<th>您的选择</th>
 		</tr>
 	</thead>
 		<tbody id="tbOrders"></tbody>
 	</table>
 </div>
-<div id="pnlMenu" class="block" >
-<div class="title">
-	<span class="orderName"></span>
-	  &nbsp;&nbsp;&nbsp;菜单名:<span class="menuName"></span></div>
-	<table class="tbList tbSelectable" style="width:400px;">
-	<thead>
-		<tr>
-			<th>菜名</th>
-			<th>价格</th>
-		</tr>
-	</thead>
-		<tbody id="tbDishes"></tbody>
+<div id="pnlMenu" class="block" style="display:none;">
+<div class="title" style="height:28px;">
+	  Step 2: 编辑我的订单
+	<div style="float:right;">
+		<span class="orderName"></span>
+		  &nbsp;&nbsp;&nbsp;菜单名:<span class="menuName"></span></div>
+	</div>
+	<div class="sum">
+		
+	</div>
+	
+	<table border="0" cellspacing="0" cellpadding="0" style="width:100%">
+		<tr><td style="40%" valign="top">
+			<b>菜单：</b>
+			<table class="tbList tbHover">
+			<thead>
+				<tr>
+					<th style="min-width:120px;">菜名</th>
+					<th style="width:100px;">价格</th>
+					<th style="width:100px;">选取</th>
+				</tr>
+			</thead>
+				<tbody id="tbDishes"></tbody>
+			</table>
+			
+		</td><td valign="top">
+			<div id="pnlMyChoice"  style="display:none;">
+				<b>我的选择：</b>
+				<table class="tbList tbHover">
+				<thead>
+					<tr>
+						<th style="min-width:120px;">菜名</th>
+						<th style="width:100px;">价格</th>
+						<th style="width:100px;">数量</th>
+						<th style="width:80px;">小计</th>
+					</tr>
+				</thead>
+					<tbody class="tbSum"></tbody>
+				</table>	
+				共<span class="totalCount">0</span>份，总计：<span class="amount">0</span>元
+			</div>
+			<div id="pnlNoChoice" class="yellowBlock" style="font-family:icomoon;display:none;">
+				 <span style="font-size:22px;color:#669900;vertical-align: middle;">&#xe8c7;</span>
+				 未选择菜品，请在左侧点击
+				 <span style="font-size:16px;color:#666666;vertical-align: middle;">&#xe636;</span>
+				 进行选取。
+			</div>
+			
+			<div style="text-align: right;padding:10px 20px 4px 0px;">
+				<button id="btnSubmit1" class="midBtn" style="width:120px;">提交订单</button>		
+				<button id="btnDel1" class="midBtn">取消订单</button>
+			</div>
+		</td></tr>
 	</table>
+</div>
+
+<div id="pnlParty" class="block" style="display:none;">
+<div class="title" style="height:28px;">
+	  Step 2: 编辑我的订单
+	<div style="float:right;">
+		<span class="orderName"></span></div>
+	</div>
+	份数：<input class="pieces" ></input>
+        <button id="btnSubmit2" class="bigBtn">提交订单</button>        
+	
 </div>
 
 </div>
 <div class="noOrder" style="display:none;padding:10px;">
-<div  class="noOrder warningInfo" style="padding:14px 10px 14px 60px;">还没有订单，您可以<a href="/manage/order">发起订单</a></div>
+<div  class="noOrder warningInfo" style="padding:14px 10px 14px 60px;background-color: #FFFEF5;">还没有饭事，<a href="/manage/sponsor">我来发起吧！</a></div>
 </div>
 {% end %}

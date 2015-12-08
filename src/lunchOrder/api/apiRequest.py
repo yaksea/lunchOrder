@@ -11,6 +11,8 @@ import json
 import httplib
 from lunchOrder.common.exception import ExternalAPIException
 from lunchOrder.common.utility import urlJoin
+import socket
+socket.setdefaulttimeout(3)
 
 def get(apiUrl, suffix=None, headers={}, **params): 
     return request(apiUrl, suffix, 'GET', headers, **params)
@@ -19,7 +21,7 @@ def get(apiUrl, suffix=None, headers={}, **params):
 def post(apiUrl, suffix=None, headers={}, **params):      
     return request(apiUrl, suffix, 'POST', headers, **params)
     
-def request(apiUrl, suffix=None, method='GET', headers={}, **params):      
+def request(apiUrl, suffix=None, method='GET', headers={}, returnType='json', jsonCode='GB2312', **params):      
     if suffix: 
         url = urlJoin(apiUrl, suffix)
     else:
@@ -27,13 +29,14 @@ def request(apiUrl, suffix=None, method='GET', headers={}, **params):
         
     urlParts = urlparse(apiUrl)
     
-    host = '%s:%d'%(urlParts.hostname, urlParts.port or 80)
 
-     #连接服务器
+    #连接服务器
     if urlParts.scheme == 'https':
-        conn=httplib.HTTPSConnection(host)
+        host = urlParts.hostname
+        conn=httplib.HTTPSConnection(host, timeout=3)
     else:
-        conn=httplib.HTTPConnection(host)
+        host = '%s:%d'%(urlParts.hostname, urlParts.port or 80)
+        conn=httplib.HTTPConnection(host, timeout=3)
             
     conn.connect()
     
@@ -50,7 +53,14 @@ def request(apiUrl, suffix=None, method='GET', headers={}, **params):
     if res.status == 200:
         content = res.read()
         conn.close()
-        return json.loads(content, 'GB2312')
+        if returnType == 'json':
+            if jsonCode:
+                return json.loads(content, jsonCode)
+            else:
+                return json.loads(content)
+        else:
+            return content
+        
     elif res.status >= 300 and  res.status < 400: #重定向        
         headers = dict(res.getheaders())
         conn.close()
@@ -59,6 +69,8 @@ def request(apiUrl, suffix=None, method='GET', headers={}, **params):
         else:
             raise ExternalAPIException(res.status, url)            
     else:
+#         content = res.read()
+#         print json.loads(content, jsonCode)['msg']
         conn.close()
         raise ExternalAPIException(res.status, url)
 

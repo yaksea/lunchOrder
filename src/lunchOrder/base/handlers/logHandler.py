@@ -14,6 +14,7 @@ import time
 from lunchOrder import settings
 import urlparse
 import copy
+from lunchOrder.base.handlers.groupHandler import GroupRequestHandler
 
 #type: info, error, debug, data, sign #数组，
 #error是必须收集,在最外层收集，其它是自选收集, info收集普通的请求信息，data则涵盖info
@@ -32,7 +33,7 @@ import copy
 #request: {header:'',body:'',url:''}            #error情况下收集
 
 
-class LogRequestHandler(SessionRequestHandler):
+class LogRequestHandler(GroupRequestHandler):
     def __init__(self, *args, **kwargs):
         super(LogRequestHandler, self).__init__(*args, **kwargs)
         self._type = set()    

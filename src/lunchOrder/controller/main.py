@@ -50,12 +50,12 @@ def __buildHandlers(handlers, path):
             innerPath = os.path.join(path, item)
             __buildHandlers(handlers, innerPath)    
 
-def run():
+def run(port):
     _settings = {'template_path': os.path.join(os.path.dirname(__file__), 'templates'), 
                 "static_path": settings.TND['static_path']}
     application = tornado.web.Application(getHandlers(), 
                                       debug=False, **_settings)
-    application.listen(8020)
+    application.listen(port)
     tornado.ioloop.IOLoop.instance().start()
 
 

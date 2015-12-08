@@ -12,10 +12,9 @@ from lunchOrder.common.exception import StopOnPurpose
 from lunchOrder.base.handlers.logHandler import LogRequestHandler
 
 
-
 class PageRequestHandler(LogRequestHandler):
     def gotoPage(self, url):
-        self.write('<script>parent.location.href="%s"</script>'%url)
+        self.redirect(url)
         raise StopOnPurpose
     
     def gotoHome(self):
@@ -27,10 +26,12 @@ class PageRequestHandler(LogRequestHandler):
         self.gotoPage(url)
 
             
-    def gotoLogin(self):
-        url = '/user/login' +'?'+ urllib.urlencode(dict(returnUrl=self.referer))
-        self.redirect(url)
-        raise StopOnPurpose
+    def gotoLogin(self, returnUrl=None):
+        self.clearCookie()
+        returnUrl = returnUrl or self.request.uri
+        url = '/user/login?'+ urllib.urlencode(dict(returnUrl=returnUrl))
+        self.gotoPage(url)
+
             
 
             

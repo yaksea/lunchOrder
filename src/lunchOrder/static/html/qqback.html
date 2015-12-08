@@ -1,0 +1,25 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>QQ登陆</title>
+        <script src='/static/js/base/jquery-1.7.2.js'></script>
+        <script src='/static/js/base/jquery_extend.js'></script>
+        <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true"></script>
+    </head>
+    <body>
+        <div>
+            请稍候正在登录中……
+        </div>
+    </body>
+    <script>
+    $(function(){
+        var sid = $.getUrlAnchor('access_token');
+        $.setCookie('sid', sid);
+        $.setCookie('site', 'qq');
+	    window.opener.refreshIn();
+    });
+    	//http://17j38.com/static/html/qqback.html?#access_token=0BAE5565E393959199039DB4D0829E3E&expires_in=7776000
+    	//http://17j38.com/static/html/qqback.html?#access_token=0BAE5565E393959199039DB4D0829E3E&expires_in=7776000
+    </script>
+</html>

@@ -26,7 +26,7 @@ def authenticate(method):
         try:
             
             if not self.identity:                       
-                if isinstance(self, PageRequestHandler) and method.func_name=='get':
+                if isinstance(self, PageRequestHandler)and self.request.method =='GET':
                     self.gotoLogin()
                 elif isinstance(self, JsonRequestHandler):
                     self.sendMsg_NoIdentity('验证过期')            
@@ -57,6 +57,33 @@ def authenticate(method):
 
             
     return wrapper
+  
+def admin(method):
+    return specialRole(method, 'admin')       
+       
+def founder(method):
+    return specialRole(method, 'founder')
+  
+def super(method):
+    return specialRole(method, 'super')  
+
+def specialRole(method, roleName):
+    """Decorate methods with this to require that the user be logged in."""
+    @functools.wraps(method)
+    @authenticate
+    def wrapper(self, *args, **kwargs):  
+        if isinstance(self, SessionRequestHandler) and \
+                not set(['super', 'founder', roleName]).intersection(self.identity.roles):  
+            
+            if isinstance(self, PageRequestHandler) and method.func_name=='get':
+                self.gotoLogin()
+            elif isinstance(self, JsonRequestHandler):
+                self.sendMsg_NoIdentity('非管理员')             
+        else: 
+            return method(self, *args, **kwargs)
+
+            
+    return wrapper  
   
 
 

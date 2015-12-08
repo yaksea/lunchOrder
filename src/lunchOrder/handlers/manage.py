@@ -13,15 +13,20 @@ class User(PageRequestHandler):
     def get(self):
         self.render('manage/user.html')
         
-class Menu(PageRequestHandler):
-    @authenticate    
-    def get(self):
-        self.render('manage/menu.html')
-        
 class Finance(PageRequestHandler):
     @authenticate    
     def get(self):
         self.render('manage/finance.html')
+        
+class OrderList(PageRequestHandler):
+    @authenticate    
+    def get(self):
+        self.render('manage/orderList.html')
+        
+class Sponsor(PageRequestHandler):
+    @authenticate    
+    def get(self):
+        self.render('manage/sponsor.html')
 
 
 

@@ -8,59 +8,56 @@
 		display:block;
 	}
 	.menuBlock{
-		border:solid 1px #ccc;
+        border:solid 1px #999;
+        border-bottom:solid 1px #666;
+        border-right:solid 1px #666;
 		float:left;
-		margin: 18px;
-		min-width:260px;
-		min-height:366px;
+		margin: 6px 14px;
+		min-width:290px;
+		min-height:155px;
 		display:block;
+	    -webkit-box-shadow:4px 3px 4px #999;
+	    box-shadow: 4px 3px 4px #999;			
 	}
 	.menuBlock:hover {
-	cursor:pointer;
-	background: #F0F7FE;
+		cursor:pointer;
+		background: #F0F7FE;
 	}
-
+	.orderType{
+		border:solid 1px #aaa;
+		background:#ddd;
+		text-align:center;
+		float:left;
+		font-size:28px;
+		font-weight:bold;
+		margin: 18px;
+		min-width:260px;
+		min-height:260px;
+		line-height:260px;
+		display:block;
+	}
+	.menuBlock .head{
+		border-bottom:solid 1px #ddd;
+		margin: 0px 6px;
+		padding: 8px 8px;
+	}
+	.menuBlock .list{
+		padding: 8px 8px;
+		min-height:80px;
+	}
 </style>
 {% end %} {% block body %}
-<div style="text-align:right;padding-right:130px;"><button id="btnSubmit" class="bigBtn">开始点餐</button></div>
-<div id="menuList"></div>
+<div id="noSelected" class="warningInfo" style="padding:14px 10px 14px 60px;"> 请选择要复制的菜单。</div>
 
-<div id="dlgCreateOrder" style="display: none; width: 480px; height: 220px;"
-	buttons=".dlgButtons">
-	<table class="tbForm">
-		<tr><th>订单名：</th><td><input type="text" name="name" class="name" /></td></tr>
-		<tr><th>备注：</th><td><input type="text" name="note"  class="note"/></td></tr>
-	</table>
-	<div class='dlgButtons'>
-		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
-		<a class="easyui-component common save" componentType="linkbutton">确定</a>
-	</div>
+<div class="block" id="pnlSelected" style="background:#efefef;display:none;line-height:40px;font-size:14px;padding-left:30px;margin:0px;">
+      已选择<span id="countSelected"></span>个菜单&nbsp;&nbsp;<button id="btnSubmit" class="midBtn">开始复制</button>
 </div>
-<div id="dlgEditMenu" style="display: none; width: 480px; height: 220px; "
-	buttons=".dlgButtons">
-	<table class="tbForm">
-		<tr><th>菜单名：</th><td><input type="text" name="name" class="name" /></td></tr>
-		<tr><th>电话：</th><td><input type="text" name="phone"  class="phone"/></td></tr>
-		<tr><th>地址：</th><td><input type="text" name="address"  class="address"/></td></tr>
-	</table>
-	
-	<div class='dlgButtons'>
-		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
-		<a class="easyui-component common save" componentType="linkbutton">确定</a>
-	</div>
-</div>
-<div id="dlgEditDish" style="display: none; width: 480px; height: 220px;"
-	buttons=".dlgButtons">
-	<table class="tbForm">
-		<tr><th>菜名：</th><td><input type="text" name="name" class="name" /></td></tr>
-		<tr><th>价格：</th><td><input type="text" name="price" id="txtPrice"
-		class="easyui-component price"  componentType="numberbox" precision="2" /></td></tr>
-	</table>
-	<div class='dlgButtons'>
-		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
-		<a class="easyui-component common save" componentType="linkbutton">确定</a>
-	</div>
-</div>
-
+<table cellpadding="0px" cellspacing="0px">
+	<tr id="menuList">
+		<td valign="top" style="width:33.3%"></td>
+		<td valign="top" style="width:33.3%"></td>
+		<td valign="top" style="width:33.3%"></td>
+	</tr>
+</table>
 
 {% end %} 

@@ -4,6 +4,34 @@
 <style>
 
 </style>
+<script>
+	// caller demo {
+function callerDemo() {
+     if (callerDemo.caller) {
+         var a= callerDemo.caller.toString();
+         alert(a);
+     } else {
+         alert("this is a top function");
+     }
+}
+function outer(){
+	var vv = 'xx';
+	ccc(function(data){
+		console.info(data);
+		console.info(vv);
+	});
+}
+function handleCaller() {
+	var xx = 'asdf';
+	console.info(arguments);
+     // callerDemo();
+}
+function ccc(callback){
+	callback('data');
+}
+
+	// outer() 
+</script>
 {% end %} {% block body %}
 <table>
 	<tr>
@@ -51,6 +79,7 @@
 				<table>
 					<tbody id="tbOrderDetail"></tbody>
 				</table>
+				<div class="sum"></div>
 			</div>			
 			<div class="block" id="pnlMenu">
 					<table>
@@ -77,16 +106,24 @@
 
 <div id="dlgPay" style="display: none;  width: 480px; height: 240px;"
 	buttons=".dlgButtons">
-	<div style="font-size:14px;padding:28px 0px 0px 20px;">是由
-	<select class="payerId"  style="font-size:14px;">
-		<option value="">我</option>
-	</select>
-	付款结单的
+	<div class="view1" style="font-size: 14px; font-weight: bolder; line-height: 32px;padding: 10px 0px 20px 20px;">您确定要结单？</div>
+	<div class="view2"style="font-size: 14px; line-height: 32px;padding: 0px 0px 0px 20px;">
+		金额：<input type="text" name="amount" 
+        class="easyui-component txtAmount"  componentType="numberbox" precision="2" />
 	</div>
-
-	<div style="padding:26px 24px 0px 20px">
-	<div class="warningInfo2">&nbsp;&nbsp;&nbsp;&nbsp;确定是<span class="payerName">您</span>买单的？
-	<br/>系统将分别从各食客账户中扣减菜金共计<span class="sumAmount"></span>元至<span class="payerName">您</span>的账户中。</div></div>
+    <div class="view3">
+		<div style="font-size:14px;padding:0px 0px 0px 20px;">是由
+		<select class="payerId"  style="font-size:14px;">
+			<option value="">我</option>
+		</select>
+		付款结单的
+		</div>
+	
+		<div style="padding:26px 24px 0px 20px">
+		<div class="warningInfo2">&nbsp;&nbsp;&nbsp;&nbsp;确定是<span class="payerName">我</span>买单的？
+		<br/>系统将分别从各食客账户中扣减菜金共计<span class="sumAmount"></span>元至<span class="payerName">我</span>的账户中。</div></div>
+    </div>	
+	
 	<div class='dlgButtons'>
 		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
 		<a class="easyui-component common save" componentType="linkbutton">确定</a>

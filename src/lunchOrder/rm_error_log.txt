@@ -82,3 +82,1605 @@ Traceback (most recent call last):
   File "D:\Work\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
     self.sendMsg(balance=user['balance'])
 TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-06-23 17:49:39=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 50, in identity
+    self._identity = self.session[Session.Keys.Identity]
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 36, in session
+    if sessionId:
+NameError: global name 'sessionId' is not defined
+
+
+=====2014-06-23 17:49:39=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 85, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 50, in identity
+    self._identity = self.session[Session.Keys.Identity]
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 36, in session
+    if sessionId:
+NameError: global name 'sessionId' is not defined
+
+
+=====2014-06-23 18:00:00=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-06-23 18:26:46=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 47, in get
+    self.sendMsg(rows=rows, realName=l.pop('user')['realName'])
+UnboundLocalError: local variable 'l' referenced before assignment
+
+
+=====2014-06-24 14:14:14=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\manage.py", line 19, in get
+    self.render('manage/menu.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "manage/menu_html.generated.py", line 14, in _tt_execute
+    _tt_tmp = _tt_modules.TopMenu()  # molds\main.html:97
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 1313, in render
+    rendered = self._active_modules[name].render(*args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\common\tnd\uiModules.py", line 25, in render
+    menu.append(temp%(' class="active"',pk,siteMap['pages'][pk]))
+KeyError: '/manage/menu'
+
+
+=====2014-06-24 15:29:07=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 115, in post
+    mongo.db['order'].update({'_id':orderId}, {'$inc':{'sum.amount':-od['dish']['price'],
+KeyError: 'dish'
+
+
+=====2014-06-24 15:33:05=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 115, in post
+    mongo.db['order'].update({'_id':orderId}, {'$inc':{'sum.amount':-od['dish']['price'],
+KeyError: 'dish'
+
+
+=====2014-06-25 09:40:19=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 161, in post
+    changed_order['sum'] = {'amount':amount, 'count':len(ods)}
+TypeError: object of type 'Cursor' has no len()
+
+
+=====2014-06-25 09:46:36=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 208, in post
+    log['description'] = order['name']
+KeyError: 'name'
+
+
+=====2014-06-25 14:21:19=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 62, in post
+    log['user']['remarkName'] = log['user'].get('remarkName') or log['realName']
+KeyError: 'realName'
+
+
+=====2014-06-25 14:25:43=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 45, in get
+    row['balance'] = l['user']['balance']
+KeyError: 'user'
+
+
+=====2014-06-25 14:36:30=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 45, in get
+    self.sendMsg(rows=rows, remarkName=user.get('remarkName') or user['realName'], balance=user['balance'])
+AttributeError: 'NoneType' object has no attribute 'get'
+
+
+=====2014-06-25 14:59:27=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 26, in get
+    user = mongo.userGroup.find_one({'_id':self.identity._id},['balance'])
+AttributeError: 'Identity' object has no attribute '_id'
+
+
+=====2014-06-25 15:11:25=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 46, in get
+    log = mongo.db['accountLog'].find({'group._id':id,'isDeleted':notDeleted}).sort([('timestamp', pymongo.DESCENDING)])
+UnboundLocalError: local variable 'id' referenced before assignment
+
+
+=====2014-06-25 15:11:46=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 53, in get
+    self.sendMsg(rows=rows, remarkName='群组现金账户', balance=group['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-06-26 10:48:37=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 70, in post
+    od_dc_old = od['sum']['dishCount']
+KeyError: 'sum'
+
+
+=====2014-06-26 10:48:56=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 70, in post
+    od_dc_old = od['sum']['dishCount']
+KeyError: 'sum'
+
+
+=====2014-06-26 10:49:38=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 92, in post
+    or_sum['dishCount'][dishId] += c
+KeyError: u'b4ef810ffc3811e38ad094de80a9cf1e'
+
+
+=====2014-06-26 10:51:40=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 105, in post
+    or_sum['count'] += count
+KeyError: 'count'
+
+
+=====2014-06-26 10:57:29=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 107, in post
+    or_sum['dishes'] = list(set(or_sum['dishes']).union(dishes))
+TypeError: unhashable type: 'dict'
+
+
+=====2014-06-26 11:55:44=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 97, in post
+    or_dish = or_sum['dishes'][dishId] = (or_sum['dishes'].get(dishId) or {'count':0})
+AttributeError: 'list' object has no attribute 'get'
+
+
+=====2014-06-26 11:58:13=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 75, in post
+    c = dish['count']
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-06-26 15:51:42=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 201, in post
+    log['amount'] = -partition*od['sum']['count']
+KeyError: 'sum'
+
+
+=====2014-06-26 15:51:55=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 201, in post
+    log['amount'] = -partition*od['sum']['count']
+KeyError: 'sum'
+
+
+=====2014-06-26 15:53:26=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\order.py", line 217, in post
+    log['amount'] = -od['sum']['amount']
+KeyError: 'sum'
+
+
+=====2014-06-27 14:40:50=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 71, in identity
+    user = self.checkSessionId()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 56, in checkSessionId
+    user['_id'] = user.pop('userId')
+AttributeError: 'NoneType' object has no attribute 'pop'
+
+
+=====2014-06-27 14:40:50=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 85, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 71, in identity
+    user = self.checkSessionId()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 56, in checkSessionId
+    user['_id'] = user.pop('userId')
+AttributeError: 'NoneType' object has no attribute 'pop'
+
+
+=====2014-07-01 18:38:29=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 42, in post
+    group['name'] = self.check(self.params['name'])
+AttributeError: 'Create' object has no attribute 'check'
+
+
+=====2014-07-01 18:39:35=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 53, in post
+    ug.update({'_id':utility.getUUID, 'userName':self.identity.userName, 'type':3,
+AttributeError: 'Create' object has no attribute 'identity'
+
+
+=====2014-07-01 18:43:41=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 54, in post
+    'remarkName':self.identity.remarkName, "balance" : 0, 'groupId':group['_id'], 'roles':['founder']})
+AttributeError: 'Create' object has no attribute 'identity'
+
+
+=====2014-07-01 18:45:16=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 58, in post
+    'payment':group['payment'], 'remarkName':self.identity.remarkName,
+AttributeError: 'Create' object has no attribute 'identity'
+
+
+=====2014-07-01 18:45:57=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 63, in post
+    mongo.userGroup.insert(ug)
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\collection.py", line 362, in insert
+    self.database.connection)
+InvalidDocument: Cannot encode object: <function getUUID at 0x000000000295EF28>
+
+
+=====2014-07-08 14:47:11=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-08 17:02:46=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-08 17:03:15=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 192, in post
+    ug = _apply['applicant']
+KeyError: 'applicant'
+
+
+=====2014-07-08 17:09:46=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-08 17:09:49=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-08 18:06:33=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 24, in get
+    self.render('group/admin.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "group/admin_html.generated.py", line 14, in _tt_execute
+    _tt_tmp = _tt_modules.TopMenu()  # molds\main.html:101
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 1313, in render
+    rendered = self._active_modules[name].render(*args, **kwargs)
+TypeError: render() takes exactly 2 arguments (1 given)
+
+
+=====2014-07-09 10:23:12=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 59, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 34, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 39, in bindIdentity
+    user = mongo.user.find_one({'_id':self.userId})
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\collection.py", line 604, in find_one
+    for result in self.find(spec_or_id, *args, **kwargs).limit(-1):
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\cursor.py", line 904, in next
+    if len(self.__data) or self._refresh():
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\cursor.py", line 848, in _refresh
+    self.__uuid_subtype))
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\cursor.py", line 782, in __send_message
+    res = client._send_message_with_response(message, **kwargs)
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\mongo_client.py", line 1051, in _send_message_with_response
+    raise AutoReconnect(str(e))
+AutoReconnect: [Errno 10060] 
+
+
+=====2014-07-09 15:21:54=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 18, in get
+    self.render('group/default.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 719, in render_string
+    t = loader.load(template_name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 343, in load
+    self.templates[name] = self._create_template(name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 370, in _create_template
+    f = open(path, "rb")
+IOError: [Errno 2] No such file or directory: 'E:\\selfwork\\lunchOrder\\src\\lunchOrder\\templates\\group/default.html'
+
+
+=====2014-07-09 16:15:03=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 126, in get
+    userGroups = list(mongo.userGroup.find({'userId':self.userId, 'type':3}).sort([('createTimestamp',1)]))
+AttributeError: 'MyGroups' object has no attribute 'userId'
+
+
+=====2014-07-09 16:15:17=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 126, in get
+    userGroups = list(mongo.userGroup.find({'userId':self.userId, 'type':3}).sort([('createTimestamp',1)]))
+AttributeError: 'MyGroups' object has no attribute 'userId'
+
+
+=====2014-07-09 18:24:33=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-10 15:57:49=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 53, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 383, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+
+=====2014-07-10 15:57:52=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 53, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 383, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+
+=====2014-07-10 15:57:56=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 53, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 383, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+
+=====2014-07-10 15:58:16=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 53, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 383, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+
+=====2014-07-10 16:42:44=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-10 16:43:07=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-10 16:51:22=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-10 17:40:23=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 24, in get
+    self.render('group/admin.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "group/admin_html.generated.py", line 26, in _tt_execute
+    _tt_tmp = content.identity.groupId  # group/admin.html:102 (via molds\main.html:118)
+NameError: global name 'content' is not defined
+
+
+=====2014-07-10 17:49:39=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 76, in wrapper
+    not set(['super', 'founder', roleName]).intersection(self.identity.roles):
+AttributeError: 'NoneType' object has no attribute 'roles'
+
+
+=====2014-07-10 17:49:44=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 76, in wrapper
+    not set(['super', 'founder', roleName]).intersection(self.identity.roles):
+AttributeError: 'NoneType' object has no attribute 'roles'
+
+
+=====2014-07-10 18:19:52=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 53, in get
+    self.sendMsg(rows=rows, remarkName='群组现金账户', balance=group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-10 18:23:27=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-11 12:06:57=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\manage.py", line 24, in get
+    self.render('manage/finance.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "manage/finance_html.generated.py", line 26, in _tt_execute
+    if context.identity.payment.byTurns:  # manage/finance.html:25 (via molds\main.html:118)
+AttributeError: 'dict' object has no attribute 'byTurns'
+
+
+=====2014-07-11 12:08:14=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-07-11 17:30:35=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-11 17:30:49=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-14 11:55:34=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\menu.py", line 68, in post
+    mongo.dish.insert(dishes)
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\collection.py", line 362, in insert
+    self.database.connection)
+InvalidOperation: cannot do an empty bulk insert
+
+
+=====2014-07-14 11:56:16=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\menu.py", line 68, in post
+    mongo.dish.insert(dishes)
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\collection.py", line 362, in insert
+    self.database.connection)
+InvalidOperation: cannot do an empty bulk insert
+
+
+=====2014-07-14 17:22:02=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 38, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 1176, in connect
+    self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file)
+  File "D:\Python27\lib\ssl.py", line 387, in wrap_socket
+    ciphers=ciphers)
+  File "D:\Python27\lib\ssl.py", line 143, in __init__
+    self.do_handshake()
+  File "D:\Python27\lib\ssl.py", line 305, in do_handshake
+    self._sslobj.do_handshake()
+SSLError: [Errno 8] _ssl.c:507: EOF occurred in violation of protocol
+
+
+=====2014-07-14 17:23:54=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 38, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 1176, in connect
+    self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file)
+  File "D:\Python27\lib\ssl.py", line 387, in wrap_socket
+    ciphers=ciphers)
+  File "D:\Python27\lib\ssl.py", line 143, in __init__
+    self.do_handshake()
+  File "D:\Python27\lib\ssl.py", line 305, in do_handshake
+    self._sslobj.do_handshake()
+SSLError: [Errno 8] _ssl.c:507: EOF occurred in violation of protocol
+
+
+=====2014-07-14 17:28:47=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 55, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 383, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+
+
+=====2014-07-14 17:31:13=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 55, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 381, in raw_decode
+    obj, end = self.scan_once(s, idx)
+UnicodeDecodeError: 'gb2312' codec can't decode bytes in position 0-1: illegal multibyte sequence
+
+
+=====2014-07-14 17:31:36=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 55, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 381, in raw_decode
+    obj, end = self.scan_once(s, idx)
+UnicodeDecodeError: 'gb2312' codec can't decode bytes in position 0-1: illegal multibyte sequence
+
+
+=====2014-07-14 17:31:51=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 56, in request
+    return json.loads(content, 'GB2312')
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 381, in raw_decode
+    obj, end = self.scan_once(s, idx)
+UnicodeDecodeError: 'gb2312' codec can't decode bytes in position 0-1: illegal multibyte sequence
+
+
+=====2014-07-14 17:34:09=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\requester.py", line 26, in request
+    return apiRequest.request('https://graph.qq.com', suffix, method, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 56, in request
+    return json.loads(content, jsonCode)
+  File "D:\Python27\lib\json\__init__.py", line 351, in loads
+    return cls(encoding=encoding, **kw).decode(s)
+  File "D:\Python27\lib\json\decoder.py", line 365, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\Python27\lib\json\decoder.py", line 381, in raw_decode
+    obj, end = self.scan_once(s, idx)
+LookupError: unknown encoding: 
+
+
+=====2014-07-14 18:11:41=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 31, in __init__
+    userId = auth.factory.User.getApi(site).check(sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\auth\factory.py", line 30, in getApi
+    cls.instances[site] = userApi =qq.user.User(env)
+AttributeError: 'module' object has no attribute 'user'
+
+
+=====2014-07-14 18:11:41=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 31, in __init__
+    userId = auth.factory.User.getApi(site).check(sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\auth\factory.py", line 30, in getApi
+    cls.instances[site] = userApi =qq.user.User(env)
+AttributeError: 'module' object has no attribute 'user'
+
+
+=====2014-07-14 18:12:08=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 31, in __init__
+    userId = auth.factory.User.getApi(site).check(sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\user.py", line 16, in check
+    return '%s_%s'%(self.site, openId)
+AttributeError: 'User' object has no attribute 'site'
+
+
+=====2014-07-14 18:12:08=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 31, in __init__
+    userId = auth.factory.User.getApi(site).check(sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\user.py", line 16, in check
+    return '%s_%s'%(self.site, openId)
+AttributeError: 'User' object has no attribute 'site'
+
+
+=====2014-07-14 18:12:47=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 34, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 41, in bindIdentity
+    user = auth.factory.User.getApi(self.site).getInfo(self.userId, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\user.py", line 25, in getInfo
+    return dict(realName=ret['nickname'], userId=userId, userName=ret['nickname'], site=self.site)
+AttributeError: 'User' object has no attribute 'site'
+
+
+=====2014-07-14 18:12:48=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 34, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 41, in bindIdentity
+    user = auth.factory.User.getApi(self.site).getInfo(self.userId, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\qq\user.py", line 25, in getInfo
+    return dict(realName=ret['nickname'], userId=userId, userName=ret['nickname'], site=self.site)
+AttributeError: 'User' object has no attribute 'site'
+
+
+=====2014-07-15 10:08:06=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\menu.py", line 69, in post
+    menu['contact']['address'] = self.params['address'] or menu['address']
+KeyError: 'address'
+
+
+=====2014-07-15 10:08:26=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\menu.py", line 69, in post
+    menu['contact']['address'] = self.params['address'] or menu['address']
+KeyError: 'address'
+
+
+=====2014-07-15 14:16:32=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\group.py", line 184, in post
+    _apply['updateTime'] = utility.getFormattedTime(_apply['updateTimestamp'])
+KeyError: 'updateTimestamp'
+
+
+=====2014-07-15 15:53:53=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 74, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 31, in __init__
+    userId = auth.factory.User.getApi(site).check(sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\user.py", line 18, in check
+    ret = self.handler.check(sid)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 46, in check
+    return self.post("/passport/check", uap_sid=sid)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 26, in post
+    return self.request('POST', *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 40, in request
+    log.out(ex)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\common\log.py", line 16, in out
+    sys.stdout.flush()
+IOError: [Errno 22] Invalid argument
+
+
+=====2014-07-15 17:05:09=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-15 17:05:20=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-07-16 14:58:21=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 163, in post
+    mongo.group.update({'_id': ug['groupId']}, {'admins':{'$pull':{'_id':ugid}}})
+  File "D:\Python27\Lib\site-packages\pymongo-2.6.3-py2.7-win-amd64.egg\pymongo\collection.py", line 487, in update
+    check_keys, self.__uuid_subtype), safe)
+InvalidDocument: key '$pull' must not start with '$'
+
+
+=====2014-07-24 18:05:45=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 24, in get
+    code_img = create_validate_code()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\common\securityCode\__init__.py", line 63, in create_validate_code
+    strs = create_strs(draw,chars,length,font_type, font_size,width,height,fg_color)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\common\securityCode\__init__.py", line 108, in create_strs
+    font = ImageFont.truetype(font_type, font_size)
+  File "d:\python27\lib\site-packages\pillow-2.3.0-py2.7-win-amd64.egg\PIL\ImageFont.py", line 237, in truetype
+    return FreeTypeFont(filename, size, index, encoding)
+  File "d:\python27\lib\site-packages\pillow-2.3.0-py2.7-win-amd64.egg\PIL\ImageFont.py", line 131, in __init__
+    self.font = core.getfont(font, size, index, encoding)
+IOError: cannot open resource
+
+
+=====2014-07-24 18:07:27=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 28, in get
+    self.write(code_img.read())
+AttributeError: 'tuple' object has no attribute 'read'
+
+
+=====2014-07-24 18:07:52=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 28, in get
+    self.write(code_img[0].read())
+  File "d:\python27\lib\site-packages\pillow-2.3.0-py2.7-win-amd64.egg\PIL\Image.py", line 525, in __getattr__
+    raise AttributeError(name)
+AttributeError: read
+
+
+=====2014-07-24 18:12:35=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 28, in get
+    self.write(code_img[0].tobitmap())
+  File "d:\python27\lib\site-packages\pillow-2.3.0-py2.7-win-amd64.egg\PIL\Image.py", line 585, in tobitmap
+    raise ValueError("not a bitmap")
+ValueError: not a bitmap
+
+
+=====2014-07-24 18:15:01=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 28, in get
+    self.write(code_img[0].getdata())
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 610, in write
+    chunk = utf8(chunk)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\escape.py", line 203, in utf8
+    "Expected bytes, unicode, or None; got %r" % type(value)
+TypeError: Expected bytes, unicode, or None; got <type 'ImagingCore'>
+
+
+=====2014-07-24 18:15:22=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 28, in get
+    self.write(code_img[0].getdata())
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 610, in write
+    chunk = utf8(chunk)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\escape.py", line 203, in utf8
+    "Expected bytes, unicode, or None; got %r" % type(value)
+TypeError: Expected bytes, unicode, or None; got <type 'ImagingCore'>
+
+
+=====2014-07-24 18:18:46=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 30, in get
+    out = StringIO()
+TypeError: 'module' object is not callable
+
+
+=====2014-07-24 18:19:01=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 32, in get
+    self.write(out.getvalue().getdata())
+AttributeError: 'str' object has no attribute 'getdata'
+
+
+=====2014-07-24 18:19:01=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\securityCode.py", line 32, in get
+    self.write(out.getvalue().getdata())
+AttributeError: 'str' object has no attribute 'getdata'
+
+
+=====2014-08-04 18:35:37=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 127, in post
+    if not getattr(vali, kw)(user['kw']):
+KeyError: 'kw'
+
+
+=====2014-08-05 16:38:36=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 157, in get
+    self.render('user/forget.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 719, in render_string
+    t = loader.load(template_name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 343, in load
+    self.templates[name] = self._create_template(name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 370, in _create_template
+    f = open(path, "rb")
+IOError: [Errno 2] No such file or directory: 'E:\\selfwork\\lunchOrder\\src\\lunchOrder\\templates\\user/forget.html'
+
+
+=====2014-08-06 11:44:34=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 170, in post
+    self.resetPasswords.set(user['_id'], rid, 3600)
+AttributeError: 'Forget' object has no attribute 'resetPasswords'
+
+
+=====2014-08-06 11:45:24=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 180, in post
+    '''%(user['realName'], rid, user['_id'], utility.getFormattedTime(time.time()+30, type))
+  File "E:\selfwork\lunchOrder\src\lunchOrder\common\utility.py", line 42, in getFormattedTime
+    return time.strftime(DATETIME_FORMAT[type], time.localtime(floatTime))
+TypeError: tuple indices must be integers, not type
+
+
+=====2014-08-06 11:45:42=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 180, in post
+    '''%(user['realName'], rid, user['_id'], utility.getFormattedTime(time.time()+30))
+TypeError: not enough arguments for format string
+
+
+=====2014-08-06 11:45:48=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 180, in post
+    '''%(user['realName'], rid, user['_id'], utility.getFormattedTime(time.time()+30))
+TypeError: not enough arguments for format string
+
+
+=====2014-08-06 14:39:45=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 104, in get
+    if self.identity and self.identity.site == 'pri':
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 85, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 35, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 47, in bindIdentity
+    self.remarkName = self.realName = user['realName']
+KeyError: 'realName'
+
+
+=====2014-08-06 14:39:45=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 85, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 35, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 47, in bindIdentity
+    self.remarkName = self.realName = user['realName']
+KeyError: 'realName'
+
+
+=====2014-08-06 14:43:30=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 28, in wrapper
+    if not self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 85, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 35, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 47, in bindIdentity
+    self.remarkName = self.realName = user['realName']
+KeyError: 'realName'
+
+
+=====2014-08-06 14:43:30=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\logHandler.py", line 86, in log_flush
+    if self.identity:
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\sessionHandler.py", line 85, in identity
+    self._identity = Identity(self.site, self.sessionId)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 35, in __init__
+    self.bindIdentity()
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\identity.py", line 47, in bindIdentity
+    self.remarkName = self.realName = user['realName']
+KeyError: 'realName'
+
+
+=====2014-08-06 15:08:20=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\feedback.py", line 17, in get
+    self.render('feedback/default.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "feedback/default_html.generated.py", line 7, in _tt_execute
+    _tt_tmp = json.dumps(context.identity.toJson(True))  # molds\main.html:21
+AttributeError: 'NoneType' object has no attribute 'toJson'
+
+
+=====2014-08-06 15:16:19=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 96, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\feedback.py", line 20, in get
+    self.render('feedback/anonymous.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 722, in render_string
+    return t.generate(**namespace)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 278, in generate
+    return execute()
+  File "feedback/anonymous_html.generated.py", line 7, in _tt_execute
+    _tt_tmp = json.dumps(context.identity.toJson(True))  # molds\main.html:21
+AttributeError: 'NoneType' object has no attribute 'toJson'
+
+
+=====2014-08-06 17:06:26=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 272, in get
+    self.render('/user/myGroups.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 719, in render_string
+    t = loader.load(template_name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 343, in load
+    self.templates[name] = self._create_template(name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 370, in _create_template
+    f = open(path, "rb")
+IOError: [Errno 2] No such file or directory: '/user/myGroups.html'
+
+
+=====2014-08-06 17:07:00=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\user.py", line 272, in get
+    self.render('/user/myGroups.html')
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 719, in render_string
+    t = loader.load(template_name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 343, in load
+    self.templates[name] = self._create_template(name)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\template.py", line 370, in _create_template
+    f = open(path, "rb")
+IOError: [Errno 2] No such file or directory: '/user/myGroups.html'
+
+
+=====2014-08-06 18:39:09=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-08-07 11:16:16=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-08-07 18:08:03=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-08-07 18:08:34=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-08-07 18:10:21=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-08-07 18:26:24=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 27, in get
+    self.sendMsg(balance=user['balance'])
+TypeError: 'NoneType' object has no attribute '__getitem__'
+
+
+=====2014-08-08 10:16:14=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 94, in post
+    lusr = mongo.userGroup.find_and_modify({'_id':self.identity._id},{'$inc':{'balance':-amount}})
+AttributeError: 'Identity' object has no attribute '_id'
+
+
+=====2014-08-08 19:02:49=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-08-08 19:03:10=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\handlers\account.py", line 34, in get
+    self.sendMsg(balance=-group['balance'])
+KeyError: 'balance'
+
+
+=====2014-10-30 16:45:45=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\restaurant\handlers\default.py", line 49, in get
+    self.render('default/settings.html')
+  File "E:\selfwork\lunchOrder\src\restaurant\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 720, in render_string
+    namespace = self.get_template_namespace()
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 743, in get_template_namespace
+    namespace.update(self.ui)
+TypeError: 'NoneType' object is not iterable
+
+
+=====2014-10-30 16:46:02=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\restaurant\handlers\default.py", line 49, in get
+    self.render('default/settings.html')
+  File "E:\selfwork\lunchOrder\src\restaurant\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 720, in render_string
+    namespace = self.get_template_namespace()
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 743, in get_template_namespace
+    namespace.update(self.ui)
+TypeError: 'NoneType' object is not iterable
+
+
+=====2014-10-30 16:46:33=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\restaurant\handlers\default.py", line 49, in get
+    self.render('default/frame.html')
+  File "E:\selfwork\lunchOrder\src\restaurant\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 720, in render_string
+    namespace = self.get_template_namespace()
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 743, in get_template_namespace
+    namespace.update(self.ui)
+TypeError: 'NoneType' object is not iterable
+
+
+=====2014-10-30 16:47:06=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\restaurant\handlers\default.py", line 49, in get
+    self.render('default/frame.html')
+  File "E:\selfwork\lunchOrder\src\restaurant\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 720, in render_string
+    namespace = self.get_template_namespace()
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 743, in get_template_namespace
+    namespace.update(self.ui)
+TypeError: 'NoneType' object is not iterable
+
+
+=====2014-10-30 16:53:54=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 34, in wrapper
+    mr = method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\base\wrapper.py", line 83, in wrapper
+    return method(self, *args, **kwargs)
+  File "E:\selfwork\lunchOrder\src\restaurant\handlers\default.py", line 49, in get
+    self.render('default/frame.html')
+  File "E:\selfwork\lunchOrder\src\restaurant\base\handlers\baseHandler.py", line 25, in render
+    super(BaseRequestHandler, self).render(*args, context=self, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 615, in render
+    html = self.render_string(template_name, **kwargs)
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 720, in render_string
+    namespace = self.get_template_namespace()
+  File "D:\Python27\Lib\site-packages\tornado-3.2-py2.7-win-amd64.egg\tornado\web.py", line 743, in get_template_namespace
+    namespace.update(self.ui)
+TypeError: 'NoneType' object is not iterable
+
+
+=====2014-12-10 13:50:50=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 41, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 772, in connect
+    self.timeout, self.source_address)
+  File "D:\Python27\lib\socket.py", line 571, in create_connection
+    raise err
+timeout: timed out
+
+
+=====2014-12-10 13:50:53=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 41, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 772, in connect
+    self.timeout, self.source_address)
+  File "D:\Python27\lib\socket.py", line 571, in create_connection
+    raise err
+timeout: timed out
+
+
+=====2015-02-16 13:40:16=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 41, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 772, in connect
+    self.timeout, self.source_address)
+  File "D:\Python27\lib\socket.py", line 571, in create_connection
+    raise err
+timeout: timed out
+
+
+=====2015-02-16 13:40:19=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 41, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 772, in connect
+    self.timeout, self.source_address)
+  File "D:\Python27\lib\socket.py", line 571, in create_connection
+    raise err
+timeout: timed out
+
+
+=====2015-10-29 15:51:56=========================================
+
+Traceback (most recent call last):
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\oap\oapClient.py", line 36, in request
+    return apiRequest.request(self.setting['apiUrl'], suffix, method, headers, **kwargs)
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 68, in request
+    return request(headers['location'])
+  File "E:\selfwork\lunchOrder\src\lunchOrder\api\apiRequest.py", line 41, in request
+    conn.connect()
+  File "D:\Python27\lib\httplib.py", line 772, in connect
+    self.timeout, self.source_address)
+  File "D:\Python27\lib\socket.py", line 571, in create_connection
+    raise err
+error: [Errno 10061] 

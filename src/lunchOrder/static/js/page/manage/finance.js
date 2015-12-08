@@ -1,83 +1,108 @@
 (function($) {
-	var tbList, dlgRecharge,dlgEdit;
+	var tbUserList, dlgRecharge;
 	var curUser, curTr;
+	var cashBalance;
 	
 	$(function(){
-		tbList = $('#tbList');
+		tbUserList = $('#tbUserList');
+		cashBalance = $('#cashBalance');
 		dlgRecharge = $('#dlgRecharge');
 		dlgRecharge.find('.save').click(recharge);
 		dlgRecharge.find('.cancel').click(function(){
 			dlgRecharge.dialog('close');
 		});
-		dlgEdit = $('#dlgEdit');
-		dlgEdit.find('.save').click(edit);
-		dlgEdit.find('.cancel').click(function(){
-			dlgEdit.dialog('close');
-		});
+
 		
 		bindUsers();
+		bindGroupCash();
 	})
 	
+	function bindGroupCash(){
+		if(!identity.payment.byTurns){
+			cashBalance.empty();
+			$.getJSON('/account/groupbalance',{}, function(data){
+				cashBalance.text('现金账户余额：'+Math.toMoney(data.balance)+"   ");
+				var a = $('<a href="/account?group=1" target="_blank">账户明细</a>').appendTo(cashBalance);
+			})
+		}
+	}
 	function bindUsers(){		
-		tbList.empty();
+		tbUserList.empty();
 		$.getJSON('/user/list',{}, function(data){
+			var trFounder = null;
 			$(data.rows).each(function(i, user){
-				var tr = $('<tr />').appendTo(tbList);
+				var role = $.inArray("founder", user.roles)>=0 ? 'founder': 
+								$.inArray("admin", user.roles)>=0 ? 'admin': '';
+				var tr;
+				
+				if(role==='founder'){
+					tr = $('<tr />').prependTo(tbUserList);
+					trFounder = tr;
+				}else if(role==='admin'){
+					if(trFounder){
+						tr = $('<tr />').insertAfter(trFounder);
+					}else{
+						tr = $('<tr />').prependTo(tbUserList);
+						trFounder = tr;
+					}
+				}else{
+					tr = $('<tr />').appendTo(tbUserList);
+				}
+				if(curUser && curUser._id===user._id){
+					tr.addClass('selected');
+				}
 				tr.click(function(){
-					tbList.children('.selected').removeClass('selected');
+					tbUserList.children('.selected').removeClass('selected');
 					tr.addClass('selected');
 					curUser = user;	
-					curTr = tr;
-				})
-				bindUser(tr, user);
-			})
-		})
-	}
-	
-	function bindUser(tr, user){
-		tr.empty();
+				});
+				var td1 = $('<td />').appendTo(tr);
+				if(role==='founder'){
+					var img = $('<img src="/static/images/founder.png" class="imgRole" title="群主"/>').appendTo(td1);
+					var txtName = $('<span title="群主" />').appendTo(td1);
+					txtName.text(user.remarkName || user.realName);
+				}else if(role==='admin'){
+					var img = $('<img src="/static/images/admin.png" class="imgRole"  title="管理员"/>').appendTo(td1);
+					var txtName = $('<span title="管理员" />').appendTo(td1);
+					txtName.text(user.remarkName || user.realName);
+				}else{
+					td1.text(user.remarkName || user.realName);
+				}
+				var td2 = $('<td />').appendTo(tr);
+				td2.text(user.userName);
+				var td3 = $('<td class="balance"/>').appendTo(tr);
+				td3.text(Math.toMoney(user.balance));
+				var td4 = $('<td />').appendTo(tr);
+				
+				function _recharge(){
+					var btnRecharge = $('<a href="javascript:void(0)" class="linkBtn1">充值</a>').appendTo(td4);
+					
+					btnRecharge.click(function(){
+						dlgRecharge.show();
+						dlgRecharge.dialog({
+							modal : true,
+							title : "充值"
+						})
+						dlgRecharge.find('.name').text(user.remarkName||user.realName);
+						dlgRecharge.find('.amount').val('');
+					})
+				}
+				
+				if(identity.payment.byTurns){
+					if(identity._id!=user._id){
+						_recharge();
+					}
+				}else{
+					if(identity.isAdmin){
+						_recharge();
+					}
+				}
 		
-		var td1 = $('<td />').appendTo(tr);
-		td1.text(user.name);
-		var td2 = $('<td />').appendTo(tr);
-		td2.text(user._id);
-		var td3 = $('<td class="balance"/>').appendTo(tr);
-		td3.text(user.balance);
-		var td4 = $('<td />').appendTo(tr);
-		
-		if(identity.userId!=user._id){
-			var btnRecharge = $('<a href="javascript:void(0)" class="linkBtn1">充值</a>').appendTo(td4);
-			
-			btnRecharge.click(function(){
-				dlgRecharge.show();
-				dlgRecharge.dialog({
-					modal : true,
-					title : "充值"
-				})
-				dlgRecharge.find('.name').text(user.name);
-				dlgRecharge.find('.amount').val('');
-			})
-		}
-		if(identity.isAdmin){
-			var btnEdit = $('<a href="javascript:void(0)" class="linkBtn1">编辑</a>').appendTo(td4);
-			
-			btnEdit.click(function(){
-				dlgEdit.show();
-				dlgEdit.dialog({
-					modal : true,
-					title : "编辑"
-				})
-				dlgEdit.find('.id').val(user._id);
-				dlgEdit.find('.name').val(user.name);
-				dlgEdit.find('.isAdmin').prop('checked', user.isAdmin);
-			})
-		}
-		var btn2 = $('<a target="_blank">账户明细</a>').appendTo(td4);
-		btn2.prop('href', '/account?id='+user._id);
-		
-
-	}
-	
+				var btn2 = $('<a target="_blank">账户明细</a>').appendTo(td4);
+				btn2.prop('href', '/account?id='+user._id);
+			});
+		});
+	}	
 	function recharge(){
 		var amount = dlgRecharge.find('.amount').val();
 		if(!amount){
@@ -85,24 +110,14 @@
 			return;
 		}
 		dlgRecharge.dialog('close');
-		$.postJSON('/account/recharge', {'userId':curUser._id, 'amount':amount}, function(data){
-			curTr.find('.balance').text(data.balance);
+		$.postJSON('/account/recharge', {'id':curUser._id, 'amount':amount}, function(data){
 			$.messagelabel.show('充值成功！');
 			bindUsers();
+			bindGroupCash();
 		})
 	}
 	
-	function edit(){
-		dlgEdit.dialog('close');
-		var user = {'_id': parseInt(dlgEdit.find('.id').val())};
-		user['name'] = dlgEdit.find('.name').val();
-		user['isAdmin'] = dlgEdit.find('.isAdmin').prop('checked');
-		
-		$.postJSON('/user/edit', user, function(data){
-			$.messagelabel.show('操作成功！');
-			bindUsers();
-		})
-	}
+
 	
 
 })(jQuery);

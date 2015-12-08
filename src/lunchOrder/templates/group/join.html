@@ -1,0 +1,108 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/group/join.js"></script>
+<style>
+   #ulGroups{
+        overflow:hidden;
+        zoom:1;
+        display:block;
+        margin:0px;
+        padding:5px;
+    }
+    .groupBlock{
+        border:solid 1px #999;
+        border-bottom:solid 1px #666;
+        border-right:solid 1px #666;
+        float:left;
+        margin: 12px;
+        width:300px;
+        height:180px;
+        display:block;
+	    padding:1px 1px;
+	    -webkit-box-shadow:4px 3px 4px #999;
+	    box-shadow: 4px 3px 4px #999;	    
+    }
+    .groupBlock div{
+    	padding: 0px 0px;
+    }
+    .groupBlock:hover {
+    }
+    .groupBlock .name{
+    	line-height: 30px;
+    	font-size:16px;
+    	font-weight: bolder;
+    	padding-left:8px;
+    	background: #ddd;
+    }
+    .groupBlock .bottom{
+    	background: #F9F9F9;
+    	height: 34px;
+    	line-height: 34px;
+    	padding:0 4px;
+    }
+    .groupBlock .pnl2{
+        height: 30px;
+        line-height: 30px;   
+        padding:0 4px; 	
+    }
+    .groupBlock .payment{
+        height: 30px;
+        line-height: 30px;      
+        padding:0 4px;
+    }
+    .groupBlock .brief{
+    	height: 56px;
+    	line-height: 24px;
+    	padding:0 4px;
+    }
+    .right{
+    	float:right;
+    }
+    .left{
+    	float:left;
+    }
+    .operation{
+    	display:block;
+    	float: right;
+    }
+
+
+</style>
+{% end %} {% block body %}
+<div>
+	<div id="pnlApply" style="display: none;">
+		<span style="font-size: 14px; color:#ff8800">您已申请加入以下的群：</span>
+	<table class="tbList tbSelectable" style="width:100%;">
+            <thead>
+            <tr>
+	            <th>申请过的群</th>
+	            <th>申请时间</th>
+	            <th>申请理由</th>
+	            <th>状态</th>
+	            <th>群主</th>
+            </tr>
+            </thead>
+            <tbody id="tbApplyList"></tbody>
+        </table>
+	</div>
+	<div style="text-align:right;line-height: 60px;">
+		<a href="/group/create?returnUrl=/group/join" class="linkBtn2">自已创建一个群</a>
+	</div>
+	<ul id="ulGroups">
+		
+	</ul>
+	<div id="dlgApply" style="display: none; width: 480px; height: 220px;"
+	buttons=".dlgButtons">
+	<table class="tbForm">
+		<tr><th style="width:120px;">请输入申请理由：</th><td><input type="text" name="reason" class="reason" /></td></tr>
+	</table>
+	<div class='dlgButtons'>
+		<a class="easyui-component common cancel" componentType="linkbutton">取消</a>
+		<a class="easyui-component common save" componentType="linkbutton">确定</a>
+	</div>
+	</div>
+	
+</div>
+
+
+{% end %} 

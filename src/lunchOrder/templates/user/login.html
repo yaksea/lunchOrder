@@ -1,83 +1,56 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script src='/static/js/base/jquery-1.7.2.js'></script>
-<script src='/static/js/base/jquery_extend.js'></script>
-
-<script src="/static/js/component/draggable.js"></script>
-<script src="/static/js/component/calendar.js"></script>
-<script src="/static/js/component/droppable.js"></script>
-<script src="/static/js/component/resizable.js"></script>
-<script src="/static/js/component/linkbutton.js"></script>
-<script src="/static/js/component/panel.js"></script>
-<script src="/static/js/component/window.js"></script>
-<script src="/static/js/component/dialog.js"></script>
-<script src="/static/js/component/messager.js"></script>
-<script src="/static/js/component/form.js"></script>
-<script src="/static/js/component/numberbox.js"></script>
-<script src="/static/js/component/validatebox.js"></script>
-<script src="/static/js/component/combo.js"></script>
-<script src="/static/js/component/combobox.js"></script>
-<script src="/static/js/component/datebox.js"></script>
-<script src="/static/js/component/datetimebox.js"></script>
-<script src="/static/js/component/parser.js"></script>
-<script src="/static/js/component/messagelabel.js"></script>
-<script src="/static/js/component/tooltip.js"></script>
-<script src="/static/js/component/placeholder.js"></script>
-
-<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
-
-<link href="/static/css/component/spinner.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/calendar.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/combo.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/combopicker.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/combobox.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/datagrid.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/datebox.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/dialog.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/linkbutton.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/messager.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/panel.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/tooltip.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/validatebox.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/window.css" rel="stylesheet" type="text/css" />
+{% extends "../molds/blank.html" %} 
+{% block head %} 
+<meta property="qc:admins" content="7171370572306375711" />
+<script src="/static/js/page/user/login.js"></script>
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101138732" data-redirecturi="http://{{context.request.host}}/static/html/qqback.html" charset="utf-8"></script>
 <style>
 	dd>label{
 		font-size:14px;
 	}
 	dd{
 		line-height:26px;
-		padding:11px 0px;
+		padding:8px 0px;
+		margin:0px;
 	}
 	dd input{
+		font-size:14px;
 		border:solid 1px #ccc;
 		width:280px;
-		height:26px;
+		height:32px;
+		line-height:32px;
+		padding:0px 6px;
 	}
 	
 </style>
-</head>
-<body style="background:#dfdfdf;width:100%;padding:10px 0px 0px;margin:0px;">
-	<div align="center" style="padding-top:200px;">
-	{% if context.params['error'] %}
-	<div>用户名或密码错误。</div>
-	{%end%}
-		<div style="background: #fff; width: 400px; text-align: left; height: 240px; padding: 40px 40px 50px; border: solid 1px #bbb;">
-			<form action="" method="post">
-				<dl style="height:140px;padding-top:15px;">
-					<dd><label for="">工号：</label><input type="text" name="loginName" /></dd>
-					<dd><label for="">密码：</label><input type="password" name="passwords" /></dd>
-				</dl>
-				<div  align="center">
-				<input type="submit" class="bigBtn" value="登  录 " />
-				<a href="/user/register">注册</a>
-				</div>
-			</form>
-	
 
+{% end %}
+{% block body %} 
+	<div align="center" style="padding-top:180px;">
+		<div style="background: #fff; width: 470px; text-align: left; height: 320px; padding: 26px 10px 0px 10px; border: solid 1px #bbb;">
+			
+			<dl style="padding:10px 0px 3px 80px;margin:0px; " id="pnlForm">
+				<dd><input type="text" id="txtUserName" placeholder="用户名" /></dd>
+				<dd><input type="password" id="txtPasswords"  placeholder="密码" /></dd>
+				<!-- <dd style="padding:2px 0px;vertical-align: middle;"><input type="text" id="txtSecurityCode" style="width:48px;vertical-align: middle;" placeholder="验证码" />
+					<a title="点击刷新，不分大小写" href="javascript:void(0)"><img src="/file/securityCode" border="0" id="securityCode" style="border:solid 1px #ccc;vertical-align: middle;"/></a>
+					
+					</dd> -->
+				<div style="padding-top: 8px;">
+				<button id="btnLogin" class="bigBtn">登  录</button>
+				<a href="/user/register">注册</a>
+				<a href="/user/forget">忘记密码</a>
+				</div>
+			</dl>
+			<div class="redBlock" id="pnlError" style="line-height: 18px;visibility: hidden;">
+				<span style="font-family: icomoon;font-size: 14px;">&#xe8ca</span>
+				<span class="content"></span>
+				</div>
+			
+				
+		<div style="padding-top: 30px;">其他帐号登录：<div id="btnQQLogin" style="vertical-align: middle;display: inline-block;"></div>
+		<div style="vertical-align: middle;display: inline-block;"></div>
 		</div>
+		</div>
+		
 	</div>
-</body>
-</html>
+{% end %}

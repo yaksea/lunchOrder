@@ -15,8 +15,27 @@ from lunchOrder.base.wrapper import authenticate
 class Default(PageRequestHandler):
     @authenticate
     def get(self):
-        self.redirect('/order')
+        groupId = self.params['groupId']
+        if groupId:
+            force = True if self.params['force'] else False
+            if self.identity.setGroup(groupId, force=force):
+                self.saveToSession()
+#                 self.render('order.html')
+                self.redirect('/order')
+            else:
+                self.render('group/apply.html')
+#                 self.redirect('/group/apply?groupId=%s'%groupId)
+        else:
+            if not self.identity.userGroups:
+                self.render('group/join.html')
+#                 self.redirect('/group/join')
+            else:
+#                 self.render('order.html')
+                self.redirect('/order')
 
+
+
+        
 
 
 

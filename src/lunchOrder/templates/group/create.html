@@ -1,0 +1,69 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/group/create.js"></script>
+<style>
+    .address, .brief{
+    	width:400px;
+    }
+    .checkResult{
+    	border: solid 1px #ccc;
+    	background: #F6F6F6;
+    	display:inline;
+    	padding: 2px 20px;
+    	display: none;
+    	color:#ff9900;
+    }
+    .tbList th{
+    	width: 140px;
+    }
+    .tbList td{
+    	height: 40px;
+    }
+    .pnlNoAudit{
+        border: solid 1px #ccc;
+        background: #F6F6F6;
+        display:inline;
+        padding: 2px 20px;
+        color:#669900;
+    }
+</style>
+{% end %} {% block body %}
+<div>
+	<table class="tbList tbSelectable" style="width:100%;" id="form">
+            <tr>
+	            <th>名 称<font style="color:red">*</font>：</th>
+	            <td><input type="text" class="name" maxlength="10" />
+	            	<span id="pnlCheck"><span class="checkResult"></span>
+	            	<a id="btnCheck" href="javascript:void(0)">检测名称是否有效</a>
+	            	</span>
+	            <span id="checking" style="display: none;"><img src="/static/images/pagination_loading.gif"></span></td>
+            </tr>
+            <tr>
+	            <th>地 址<font style="color:red">*</font>：</th>
+	            <td><input type="text" class="address" maxlength="50" /></td>
+            </tr>
+            <tr>
+	            <th>群介绍：</th>
+	            <td><textarea class="brief"></textarea></td>
+            </tr>
+            <tr>
+            	<th>支付规则<font style="color:red">*</font>：</th>
+            	<td>
+            		<input type="radio" id="byTurns0" name="byTurns" checked="true" /><label for="byTurns0">由我统一管理饭钱</label>
+            		<input type="radio" id="byTurns1" name="byTurns" /><label for="byTurns1">大家轮流买单</label>
+            	</td>
+            </tr>
+            <tr>
+                <th>开放免审：</th>
+                <td style="text-align: left;"><input type="checkbox" name="noAudit" checked="true" class="noAudit"/>
+                <span class="pnlNoAudit">允许任何人加入该群，无需经过审核。</span></td>
+            </tr>
+        </table>
+	   <div style="padding-top:40px;">
+		   <button class="midBtn" id="btnSubmit"> 确 定 </button>
+		   <button class="midBtn" id="btnGoBack"> 返 回 </button>
+	   </div>
+</div>
+
+
+{% end %} 

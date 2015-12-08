@@ -1,0 +1,85 @@
+{% extends "../molds/user.html" %} 
+{% block head %}
+<script src="/static/js/page/user/myGroups.js"></script>
+<script src='/static/js/base/jquery.dotdotdot.min.js'></script>
+<style>
+   #ulGroups{
+        overflow:hidden;
+        zoom:1;
+        display:block;
+        margin:0px;
+        padding:5px;
+    }
+    .groupBlock{
+        border:solid 1px #999;
+        border-bottom:solid 1px #666;
+        border-right:solid 1px #666;
+        float:left;
+        margin: 12px;
+        width:300px;
+        height:210px;
+        display:block;
+        padding:1px 1px;
+        -webkit-box-shadow:4px 3px 4px #999;
+        box-shadow: 4px 3px 4px #999;       
+    }
+    .groupBlock div{
+        padding: 0px 0px;
+    }
+    .groupBlock:hover {
+    }
+    .groupBlock .name{
+        line-height: 30px;
+        font-size:16px;
+        font-weight: bolder;
+        padding-left:8px;
+        background: #ddd;
+    }
+    .groupBlock .bottom{
+        background: #F9F9F9;
+        height: 34px;
+        line-height: 34px;
+        padding:0 4px;
+    }
+    .groupBlock .pnl2{
+        height: 30px;
+        line-height: 30px;   
+        padding:0 4px;  
+    }
+    .groupBlock .payment{
+        height: 30px;
+        line-height: 30px;      
+        padding:0 4px;
+    }
+    .groupBlock .balance{
+        height: 30px;
+        line-height: 30px;      
+        padding:0 4px;
+    }
+    .groupBlock .brief{
+        height: 56px;
+        line-height: 24px;
+        padding:0 4px;
+    }
+    .right{
+        float:right;
+    }
+    .left{
+        float:left;
+    }
+    .operation{
+        display:block;
+        float: right;
+    }
+</style>
+{% end %} {% block body %}
+<div>
+	<ul id="ulGroups" style="display: none;">
+    </ul>
+	<div id="pnlNoGroup" class="yellowBlock" style="display: none;width: 100%; line-height: 40px;font-size: 14px">
+		<font style="font-family:icomoon;font-size:20px;color:#ddd; vertical-align: bottom">&#xe8c7;</font>
+		您还未加入任何群，<a href="/group/join">立即加入</a></div>
+</div>
+
+
+{% end %} 

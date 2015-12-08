@@ -1,0 +1,116 @@
+{% extends "../molds/main.html" %} 
+{% block head %}
+<script src="/static/js/page/group/apply.js"></script>
+<style>
+   #ulGroups{
+        overflow:hidden;
+        zoom:1;
+        display:block;
+        margin:0px;
+        padding:5px;
+    }
+    .groupBlock{
+        border:solid 1px #999;
+        border-bottom:solid 1px #666;
+        border-right:solid 1px #666;
+        float:left;
+        width:300px;
+        height:180px;
+        display:block;
+	    padding:1px 1px;
+	    -webkit-box-shadow:4px 3px 4px #999;
+	    box-shadow: 4px 3px 4px #999;	    
+    }
+    .groupBlock div{
+    	padding: 0px 0px;
+    }
+    .groupBlock:hover {
+    }
+    .groupBlock .name{
+    	line-height: 30px;
+    	font-size:14px;
+    	font-weight: bolder;
+    	padding-left:8px;
+    	background: #ddd;
+    }
+    .groupBlock .bottom{
+    	background: #F9F9F9;
+    	height: 34px;
+    	line-height: 34px;
+    	padding:0 4px;
+    }
+    .groupBlock .pnl2{
+        height: 30px;
+        line-height: 30px;   
+        padding:0 4px; 	
+    }
+    .groupBlock .payment{
+        height: 30px;
+        line-height: 30px;      
+        padding:0 4px;
+    }
+    .groupBlock .brief{
+    	height: 56px;
+    	line-height: 24px;
+    	padding:0 4px;
+    }
+    .right{
+    	float:right;
+    }
+    .left{
+    	float:left;
+    }
+    .operation{
+    	display:block;
+    	float: right;
+    }
+    .linkBtn2{
+    	font-size: 14px;
+    	border:#0000A7 solid 1px;
+    	padding:10px 16px;
+    	text-decoration: none;
+    	color: #ff1100;
+    	background: #f6f6f6;
+    	font-weight: bolder;
+    }
+    .linkBtn2:hover{
+    	background: #EAEAFF;
+    }
+    
+    #pnlTitle{
+    	font-size: 22px;
+    	font-weight: bolder;
+    }
+</style>
+{% end %} {% block body %}
+<div>
+    <table border="0" cellspacing="5" cellpadding="5" style="width: 960px;">
+        <tr>
+            <th colspan="2" style="border:solid 1px #DFDFDF; background: #F9F9F9;">
+            	<h1 id="pnlTitle"></h1>
+            	<a href="/group/join" style="float:right;">查看更多群</a>
+            </th>
+        </tr>
+        <tr>
+            <td><div id="pnlNamecard" class="groupBlock"></div></td>
+            <td>
+            <div  style="border:solid 1px #CACA06; background: #FEFEE1;height:180px;">
+                <table class="tbForm">
+                    <tr>
+                        <th style="width:120px;">请输入申请理由：</th><td>
+                        <input type="text" name="reason" class="reason" />
+                        </td>
+                    </tr>
+                </table>
+                <div style="text-align: right;padding-top: 60px;padding-right: 30px;">
+                <button class="bigBtn" id="btnSubmit">提交申请</button>
+                </div>
+            </div>
+            </td>
+
+        </tr>
+    </table>
+</div>
+
+
+{% end %} 

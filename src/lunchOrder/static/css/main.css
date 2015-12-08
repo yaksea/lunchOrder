@@ -19,7 +19,13 @@ body {
 }
 
 .selected {
-	background: #BADCFB;
+	background: #FFFCDA;
+}
+div.selected:hover {
+	background: #FFFCDA;
+}
+tr.selected:hover {
+	background: #FFFCDA;
 }
 
 .menuBlock a {
@@ -52,6 +58,16 @@ body {
 	cursor:pointer;
 	background: #F0F7FE;
 }
+.tbSelectable tr.selected:hover {
+    background: #FFFCDA;
+}
+
+.tbHover tr:hover {
+	background: #F0F7FE;
+}
+.tbHover tr.selected:hover {
+    background: #FFFCDA;
+}
 
 .linkBtn1 {
 	margin: 2px;
@@ -64,6 +80,13 @@ body {
 	font-size: 14px;
 	font-weight: bold;
 	color: #222;
+}
+.midBtn {
+	width: 100px;
+	height: 36px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #333;
 }
 
 .tbForm {
@@ -104,4 +127,44 @@ body {
 	padding: 2px 10px 2px;
 	line-height: 24px;
 	font-size: 14px;
+}
+.imgRole{
+    vertical-align: middle;
+}
+.linkBtn2{
+    font-size: 14px;
+    border:#B10D00 solid 1px;
+    padding:10px 16px;
+    text-decoration: none;
+    color: #ff1100;
+    background: #f6f6f6;
+    font-weight: bolder;
+}
+.linkBtn2:hover{
+    background: #EAEAFF;
+}
+.yellowBlock {
+    padding:1px 4px;
+    background-color: #FFFEF5;
+    border: solid 1px #FFEA24;
+    line-height: 22px;
+    display:inline-block;
+    vertical-align: middle;
+}
+.greenBlock {
+    border: solid 1px #ccc;
+    background: #F6F6F6;
+    color:#669900;    
+    padding:1px 4px;
+    line-height: 22px;
+    display:inline-block;
+}
+.redBlock {
+    border: solid 1px #C1201A;
+    background: #FCE3E3;
+    color:#9C1A15;    
+    padding:1px 4px;
+    line-height: 22px;
+    display:inline-block;
+    vertical-align: middle;
 }

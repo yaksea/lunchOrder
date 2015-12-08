@@ -1,0 +1,51 @@
+{% extends "../molds/blank.html" %} 
+{% block head %} 
+<script src="/static/js/page/user/loginND.js"></script>
+<style>
+	dd>label{
+		font-size:14px;
+	}
+	dd{
+		line-height:26px;
+		padding:8px 0px;
+		margin:0px;
+	}
+	dd input{
+		font-size:14px;
+		border:solid 1px #ccc;
+		width:280px;
+		height:32px;
+		line-height:32px;
+		padding:0px 6px;
+	}
+	html body{
+		background: #fff;
+	}
+	
+</style>
+
+{% end %}
+{% block body %} 
+	<div id="pnlMain">
+		<div style="height:24px;line-height: 24px;padding-left: 6px;font-size:14px;font-style: italic;">网龙91U帐号登录</div>
+		<div style="background: #fff; width: 470px; text-align: left; height: 320px; padding: 30px 10px 0px 10px; border: solid 1px #bbb;border-left: none;">
+			<dl style="padding:10px 0px 3px 80px;margin:0px; " id="pnlForm">
+				<dd><input type="text" id="txtUserName" placeholder="网龙工号" /></dd>
+				<dd><input type="password" id="txtPasswords"  placeholder="密码" /></dd>
+				<!-- <dd style="padding:2px 0px;vertical-align: middle;"><input type="text" id="txtSecurityCode" style="width:48px;vertical-align: middle;" placeholder="验证码" />
+					<a title="点击刷新，不分大小写" href="javascript:void(0)"><img src="/file/securityCode?nd=1" border="0" id="securityCode" style="border:solid 1px #ccc;vertical-align: middle;"/></a>
+					
+					</dd> -->
+				<div style="padding-top: 8px;">
+				<button type="submit" id="btnLogin" class="bigBtn">登  录</button>
+				</div>
+			</dl>
+			<div class="redBlock" id="pnlError" style="line-height: 18px;visibility: hidden;">
+				<span style="font-family: icomoon;font-size: 14px;">&#xe8ca</span>
+				<span class="content"></span>
+				</div>
+				
+		</div>
+		</div>
+		
+{% end %}

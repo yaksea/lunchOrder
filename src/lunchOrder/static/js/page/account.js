@@ -9,13 +9,16 @@
 		bindList();
 	})
 	
-	function bindList(){		
-		$.getJSON('/account/detailList',{id:$.getUrlParam('id')}, function(data){
+	function bindList(){
+		var forGroup = $.getUrlParam('group');
+		$.getJSON('/account/detailList',{id:$.getUrlParam('id'),group:forGroup}, function(data){
 			
-//			var balance = data.userGroup.balance||0;
-			
-			txtUserName.text(data.realName);
-			txtBalance.text(balance);
+			txtUserName.text(data.remarkName);
+			if(forGroup){
+				txtBalance.text(-Math.toMoney(data.balance));
+			}else{
+				txtBalance.text(Math.toMoney(data.balance));
+			}
 			
 			$(data.rows).each(function(i, log){
 				var tr = $('<tr />').appendTo(tbList);
@@ -24,17 +27,17 @@
 				var td2 = $('<td />').appendTo(tr);
 				td2.text(logType[log.type]);
 				var td3 = $('<td />').appendTo(tr);
-				td3.text(log.amount);
 				var td4 = $('<td/>').appendTo(tr);
-//				if(balance!=((log.user.balance||0)+log.amount)){
-//					tr.css('background', 'red');
-//					console.info(balance)
-//					console.info((log.user.balance||0)+log.amount)
-//				}
-				td4.text( log.balance - log.amount);
+				if(forGroup){
+					td3.text(-log.amount.toFixed(2));
+					td4.text( Math.toMoney(-log.balance - log.amount));
+				}
+				else{
+					td3.text(log.amount);
+					td4.text( Math.toMoney(log.balance + log.amount));
+				}
 				var td5 = $('<td/>').appendTo(tr);
 				td5.text(log.description);
-//				balance -= log.amount;
 			})
 		})
 	}

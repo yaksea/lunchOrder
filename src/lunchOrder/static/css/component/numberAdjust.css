@@ -1,0 +1,41 @@
+.numberAdjust{
+    background: transparent;
+    display:inline-block;
+}
+.numberAdjust .plus, .numberAdjust .minus {
+    font-family: 'icomoon';
+    color: #666666;
+    font-size:18px;
+    text-decoration: none;
+    border: solid 1px #999;
+    padding: 1px;
+    vertical-align: middle;
+    height: 18px;
+    width: 18px;
+    display: none;
+    background: #eee;
+}
+.numberAdjust .plus{
+    border-left:none;
+}
+.numberAdjust .minus{
+    border-right:none;
+}
+.numberAdjust .plus:hover, .numberAdjust .minus:hover {
+    color: #000;
+}
+.numberAdjust .numCount {
+    display: inline;
+    width: 24px;
+    height: 20px;
+    line-height: 20px;
+    padding:0px;
+    vertical-align: middle;
+    border: solid 1px #999;
+    color: #000000;
+    text-align: center;
+    background: transparent;
+}
+.numberAdjust .noBorder {
+    border:none;
+}

@@ -3,15 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>一起叫餐吧</title>
+<meta content="" name="description">
+
+<link rel='icon' href='/static/images/favicon.ico' type='image/x-icon' />
+<link rel='shortcut icon' href='/static/images/favicon.ico' type='image/x-icon' />
+
+{% import json %}
+<script>
+	var identity = {% raw json.dumps(context.identity.toJson(True)) %};
+</script>
+
+{% import lunchOrder %}
+{% if lunchOrder.settings.ENVIRONMENT['production'] %}
+<script src='/static/js/base/jquery-1.7.2.min.js'></script>
+<script src="/static/dist/js/base.min.js"></script>
+<script src="/static/dist/js/component.min.js"></script>
+<link href="/static/dist/css/component.min.css" rel="stylesheet" type="text/css" />
+{%else%}
+<script src='/static/js/base/js_extension.js'></script>
 <script src='/static/js/base/jquery-1.7.2.js'></script>
 <script src='/static/js/base/json2.js'></script>
 <script src='/static/js/base/jquery_extend.js'></script>
-{% import json %}
-<script>
-	var identity = {% raw json.dumps(context.identity.toJson()) %};
-	
-
-</script>
+<script src='/static/js/base/ZeroClipboard.min.js'></script>
+<script src='/static/js/base/jquery.dotdotdot.min.js'></script>
 
 <script src="/static/js/component/draggable.js"></script>
 <script src="/static/js/component/calendar.js"></script>
@@ -33,16 +48,12 @@
 <script src="/static/js/component/messagelabel.js"></script>
 <script src="/static/js/component/tooltip.js"></script>
 <script src="/static/js/component/placeholder.js"></script>
-<script src="/static/js/component/easyui-lang-zh_CN.js"></script>
-
-<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
 
 <link href="/static/css/component/spinner.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/calendar.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combo.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combopicker.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/combobox.css" rel="stylesheet" type="text/css" />
-<link href="/static/css/component/datagrid.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/datebox.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/dialog.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/linkbutton.css" rel="stylesheet" type="text/css" />
@@ -51,6 +62,13 @@
 <link href="/static/css/component/tooltip.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/validatebox.css" rel="stylesheet" type="text/css" />
 <link href="/static/css/component/window.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/dropdownMenu.css" rel="stylesheet" type="text/css" />
+<link href="/static/css/component/numberAdjust.css" rel="stylesheet" type="text/css" />
+{%end%}
+
+<script src="/static/js/page/main.js"></script>
+<link href="/static/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/static/icomoon/style.css" rel="stylesheet" type="text/css" />
 <style>
 .topMenu{
 	padding:0px;
@@ -86,19 +104,29 @@
 	color:#000;
 
 }
+#phGroupList{
+	display:none;
+}
+.menu_dropdown{
+	border:solid #ccc 1px;
+}
+.menu_dropdown ul{
+	width:220px;
+}
 </style>
 
 {% block head %} {% end %}
 </head>
-<body style="background:#dfdfdf;width:100%;padding:10px 0px 0px;margin:0px;">
+<body style="background:#dfdfdf;width:100%;padding:4px 0px 0px;margin:0px;">
 <div align="center">
-<div style="height:40px;"  align="center">
-	<ul class="topMenu">
-		{% module TopMenu() %}
-	</ul>
-	<div style="float:right;">{{context.identity.realName}} &nbsp;&nbsp; <a href="/user/logout">退出</a></div>
+<div style="height:40px;width:1080px;"  align="center">
+	<a href="http://{{context.request.host}}" style="float: left;">
+		<img src="/static/images/logo.png" style="border:0px;" />
+    </a>
+    <div style="float:right;font-size: 12px;height:30px;line-height:30px;">欢迎<a href="/user/changeinfo" style="padding-left: 2px;">{{context.identity.realName}}</a> <span id="phGroupList"></span>&nbsp;<a href="/user/logout">退出</a></div>
 </div>
-<div style="background:#fff;width:1000px;text-align:left;min-height:700px;padding:40px 40px 50px;border:solid 1px #bbb;">
+{% module TopMenu(context) %}
+<div style="background:#fff;width:1000px;text-align:left;min-height:700px;padding:40px 40px 50px;border:solid 1px #bbb;" id="body">
 	{% block body %} {% end %}
 	</div></div>
 </body>

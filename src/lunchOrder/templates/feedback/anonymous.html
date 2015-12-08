@@ -1,0 +1,35 @@
+{% extends "../molds/blank.html" %}
+{% block head %}
+<script src="/static/js/page/feedback/anonymous.js"></script>
+<style>
+    #txtContent {
+        width: 660px;
+        height: 180px;
+        border: solid #999 1px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+</style>
+{% end %} {% block body %}
+<div align="center" style="padding-top:40px;">
+    <div  style="width: 800px; text-align: left; height: 480px; ">
+        <div style="font-size: 18px;font-weight: bolder; font-style: italic;padding-left: 30px;">
+            意见反馈
+        </div>
+        <div style="background: #fff; width: 100%; height: 540px; border: solid 1px #bbb;">
+
+            <div style="margin: 62px 0px 0px 30px;">
+                <textarea id="txtContent" style="overflow-y:auto; " placeholder="感谢您的使用与关注，我们会认真采纳并回复您的建议。如果方便的话，请附上您的联系方式，以便我们与您取得联系。">
+	</textarea>
+                <div>
+    <div style="text-align: left;margin-top: 24px;">
+    <button id="btnPost" class="bigBtn">提交</button>
+    <button id="btnReturn" class="midBtn">返 回</button>
+    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% end %} 

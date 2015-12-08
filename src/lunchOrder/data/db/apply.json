@@ -1,0 +1,22 @@
+{
+	'_id' : "xxx",
+	'applicant' : {}, //申请人
+	'approvers':[],//userIds
+	'reason' : '',//申请理由
+	'result':{
+		'approved':0,//1:通过，0待审，-1拒绝
+		'operator': {},//操作人员
+		'reply':''//答复
+	},
+	'group':{
+		'_id':'',
+		'name':''
+	},
+	'founder':{},
+	'admins':[],
+	'createTime':'',//创建时间
+	'createTimestamp':''//时间戳
+	'updateTime':'',//修改时间
+	'updateTimestamp':''//时间戳
+
+}

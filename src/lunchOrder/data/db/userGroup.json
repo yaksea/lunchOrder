@@ -2,7 +2,7 @@
 	'_id' : 'uuid',
 	'userId' : "xxx",
 	'groupId' : "xxx",
-	'role':'admin',//'founder'
+	'roles':['admin'],//'founder'
 	'balance' : 200,//余额
 	'realName' : '',
 	'email':'',

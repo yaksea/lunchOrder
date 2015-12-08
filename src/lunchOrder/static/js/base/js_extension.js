@@ -3,7 +3,18 @@
     return this.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-
+//if fractionDigits(小数点后位数)==2 : 200.00001->200  100.005->100.01
+Math.precision = function(number, fractionDigits){
+	if(number){
+		var en = Math.pow(10, fractionDigits);
+		return Math.round(number*en)/en;
+	}else{
+		return number;
+	}
+}
+Math.toMoney = function(number){
+	return Math.precision(number, 2);
+}
 
 Date.prototype.addDays = function(days) {
 	return new Date(this.getTime() + days * 24 * 60 * 60 * 1000);
@@ -277,8 +288,6 @@ Array.prototype.eachDataItem = function(func){
 		func(parseInt(i), this[i]);
 	}
 }
-
-
 
 
 

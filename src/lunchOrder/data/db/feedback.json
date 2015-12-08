@@ -1,0 +1,15 @@
+{
+	'_id' : 'uuid',
+	'user':{},
+	"message":""
+	'createTime':'',//创建时间
+	'createTimestamp':''//时间戳
+	'reply' : [{
+		"operator":{},
+		"message":"",
+		'createTime':'',//创建时间
+		'createTimestamp':''//时间戳
+	}],
+	'status':0, //0:未回复   1：已回复
+	"tags":[]
+}

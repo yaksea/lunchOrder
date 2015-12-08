@@ -102,15 +102,8 @@
 				$.extend(state.options, options);
 			} else {
 				var t = $(this);
-				var _option = {};
 				state = $.data(this, 'numberbox', {
-					options: $.extend(_option, $.fn.numberbox.defaults, {
-						disabled: (t.attr('disabled') ? true : undefined),
-						value : (t.val() || undefined),
-						min: (t.attr('min')=='0' ? 0 : parseFloat(t.attr('min')) || undefined),
-						max: (t.attr('max')=='0' ? 0 : parseFloat(t.attr('max')) || undefined),
-						precision: (parseInt(t.attr('precision')) || undefined)
-					}, options)
+					options: $.extend({}, $.fn.numberbox.defaults, $.fn.numberbox.parseOptions(t), options)
 				});
 				t.removeAttr('disabled');
 				$(this).css({imeMode:"disabled"});
@@ -119,11 +112,19 @@
 			setDisabled(this, state.options.disabled);
 			bindEvents(this);
 			validate(this);
-			this.value = _option.value;
 			fixValue(this);
 		});
 	};
-	
+	$.fn.numberbox.parseOptions = function(t){
+		t = $(t)
+		return {
+						disabled: (t.attr('disabled') ? true : undefined),
+						value : (t.val() || undefined),
+						min: (t.attr('min')=='0' ? 0 : parseFloat(t.attr('min')) || undefined),
+						max: (t.attr('max')=='0' ? 0 : parseFloat(t.attr('max')) || undefined),
+						precision: (parseInt(t.attr('precision')) || undefined)
+					}
+	};	
 	$.fn.numberbox.defaults = {
 		disabled: false,
 		value : "",

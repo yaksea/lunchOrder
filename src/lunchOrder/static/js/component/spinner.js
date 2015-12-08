@@ -15,15 +15,16 @@
 	 * initialize the spinner.
 	 */
 	function init(target){
-		//调整时间采集
-		var spinner=$('<span class="spinner"><input index=0 class="spinner-text hour_spiner" type="text" style="width:30px;text-align:center" />'
-		+'<label class="min_spiner">:</label><input index=1 class="spinner-text min_spiner" type="text" style="width:30px;text-align:center" />'
-		+'<label class="sec_spiner">:</label><input index=2 class="spinner-text sec_spiner" type="text" style="width:30px;text-align:center" />'
-		+'<span class="spinner-arrow">' 
-		+'<span class="spinner-arrow-up"></span>' 
-		+'<span class="spinner-arrow-down"></span>' 
-		+'</span></span>');
-		return $(target).append(spinner);
+		var spinner = $(
+				'<span class="spinner">' +
+				'<span class="spinner-arrow">' +
+				'<span class="spinner-arrow-up"></span>' +
+				'<span class="spinner-arrow-down"></span>' +
+				'</span>' +
+				'</span>'
+				).insertAfter(target);
+		$(target).addClass('spinner-text').prependTo(spinner);
+		return spinner;
 	}
 	
 	function setSize(target, width){
@@ -44,10 +45,7 @@
 	function bindEvents(target){
 		var opts = $.data(target, 'spinner').options;
 		var spinner = $.data(target, 'spinner').spinner;
-		spinner.find(".spinner-text").unbind("click").bind("click",function(e){
-			$.initEvent(e);
-			spinner.attr("_cur_index",$(e.src).attr("index"));
-		});
+		
 		spinner.find('.spinner-arrow-up,.spinner-arrow-down').unbind('.spinner');
 		if (!opts.disabled){
 			spinner.find('.spinner-arrow-up').bind('mouseenter.spinner', function(){
@@ -118,23 +116,11 @@
 	};
 	
 	$.fn.spinner.methods = {
-		getHours:function(opts,param){
-			return opts.find(".spinner-text").get(0).value;
-		},
-		getMinutes:function(opts,param){
-			return opts.find(".spinner-text").get(1).value;
-		},
-		getSeconds:function(opts,param){
-			return opts.find(".spinner-text").get(2).value;
-		},
 		options: function(jq){
 			var opts = $.data(jq[0], 'spinner').options;
 			return $.extend(opts, {
 				value: jq.val()
 			});
-		},
-		hiddenInput:function(jq,type){
-			jq.find("."+type+"_spiner").css("display","none");
 		},
 		destroy: function(jq){
 			return jq.each(function(){
@@ -191,6 +177,7 @@
 			disabled: (t.attr('disabled') ? true : undefined)
 		});
 	};
+	
 	$.fn.spinner.defaults = $.extend({}, $.fn.validatebox.defaults, {
 		width: 'auto',
 		value: '',
@@ -202,11 +189,7 @@
 		
 		spin: function(down){},	// the function to implement the spin button click
 		
-		onSpinUp: function(){
-			
-		},
-		onSpinDown: function(){
-			
-		}
+		onSpinUp: function(){},
+		onSpinDown: function(){}
 	});
 })(jQuery);

@@ -1,17 +1,14 @@
+#encoding=utf-8
 '''
 Created on 2012-2-8
 
 @author: Administrator
 '''
-from pymongo.connection import Connection
 from gridfs import GridFS
 from lunchOrder import settings
-import re
+from pymongo.collection import Collection
+from pymongo.mongo_client import MongoClient
 
-
-
-#asyncdb = asyncmongo.Client(pool_id='rm', host=settings.DB['host'], port=settings.DB['port'], 
-#                            maxcached=10, maxconnections=50, dbname=settings.DB['db_name'])
 
 class GridFSEx(GridFS):   
     def __init__(self, database, collection="fs"):
@@ -25,50 +22,83 @@ class GridFSEx(GridFS):
         self.files.remove(*args, **kwargs)
         
     def find(self, *args, **kwargs):
-        return self.files.find(*args, **kwargs)        
+        return self.files.find(*args, **kwargs)  
+          
+    def find_one(self, *args, **kwargs):
+        return self.files.find_one(*args, **kwargs)
+            
+    def findPaging(self, pageSize, *args, **kwargs):
+        #必须结合结果记录的修改，否则会死循环
+        go = True
         
-class mongoClass():    
-    connection = Connection(settings.DB['host'], settings.DB['port'])    
-#    db = connection['local']
-    db = connection['admin']
-    if settings.DB.has_key('user_name') and settings.DB.has_key('passwords'):
-        db.authenticate(settings.DB['user_name'], settings.DB['passwords'])
-    db = connection[settings.DB['db_name']]
-    
-    customer = db.customer
-    contact = db.contact
-    follow = db.follow
-    opportunity = db.opportunity
-    order = db.order
-    contract = db.contract
-    product = db.product
-    user = db.user
-    product_category = db['product_category']
-    sys_role = db['sys_role']
-    sys_count = db['sys_count']
-    product = db['product']
-    department = db['department']
-    fs = GridFSEx(db)
+        fil = self.files
+        
+        while go == True:
+            cursor = fil.find(*args, **kwargs).limit(pageSize)
+            i = 0
+            for row in cursor:
+                i += 1
+                yield row
+            if i == pageSize:
+                go = True
+            else:
+                go = False    
+                    
+class CollectionEx(Collection):
+    def __init__(self, *args, **kwargs):
+        super(CollectionEx, self).__init__(*args, **kwargs)
+        
+    def batchUpsert(self, ids=[], values={}):
+        for _id in ids:
+            super(CollectionEx, self).update({'_id':_id}, values, True)
 
+    def findPaging(self, pageSize, *args, **kwargs):
+        #必须结合结果记录的修改，否则会死循环
+        go = True
+        
+        while go == True:
+            cursor = super(CollectionEx, self).find(*args, **kwargs).limit(pageSize)
+            i = 0
+            for row in cursor:
+                i += 1
+                yield row
+            if i == pageSize:
+                go = True
+            else:
+                go = False
+
+            
+class mongoHelper():
     
-    def batchUpsert(self, collection, ids=[], values={}):
-        for id in ids:
-            mongoClass.db[collection].update({'_id':id}, values, True)
-                   
-    def getFieldsDict(self, fieldsList, type=1):
-        fields = {}
-        for field in fieldsList:
-            fields[field] = type
-        return fields
+    notDeleted = {'$nin': [True, 1, 2]}
     
+    def __init__(self, setting):    
+        connection = MongoClient(setting['host'], setting['port'])    
+        self.db = connection[setting['db_name']]
+        if setting.has_key('user_name') and setting.has_key('passwords'):
+            if setting.get('admin_account'):
+                connection['admin'].authenticate(setting['user_name'], setting['passwords'])
+            else:
+                self.db.authenticate(setting['user_name'], setting['passwords'])
+        
+        self.fs = GridFSEx(self.db)
+        self.prefix = setting.get('prefix') or ''  #collection prefix
+
+    def __getattr__(self, name):
+        if name:
+            return CollectionEx(self.db, self.prefix+name)
+    
+        
 
         
-mongo = mongoClass()
+mongo = mongoHelper(settings.DB)
 
-notDeleted = {'$nin': [True, 1]}        
+notDeleted = {'$nin': [True, 1, 2]}        
     
 if __name__ == '__main__':
-
+    for row in mongo.voter.findPaging(100,{'dirty':{'$exists':False}}):
+        mongo.voter.update({'_id':row['_id']},{'$set':{'dirty':1}})
+#         print type(row)
     print 'done.'
     
     

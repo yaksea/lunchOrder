@@ -1,12 +1,72 @@
-{% extends "../molds/main.html" %} 
+{% extends "../molds/user.html" %} 
 {% block head %}
 <script src="/static/js/page/user/changeInfo.js"></script>
+<script src="/static/js/component/inputHint.js"></script>
 <style>
-	
-
+    .txt{
+        border: solid 1px #ccc;
+        line-height: 24px;
+        width:220px;
+        vertical-align: middle;
+    }
+    .txt:focus{
+        border: solid 1px #666;
+    }
+    .checkResult{
+        border: solid 1px #ccc;
+        background: #F6F6F6;
+        display:inline;
+        padding: 2px 20px;
+        display: none;
+        color:#ff9900;
+    }
+    .tbList th{
+    }
+    .tbList td{
+        height: 40px;
+    }
+    .pnlNoAudit{
+        border: solid 1px #ccc;
+        background: #F6F6F6;
+        display:inline;
+        padding: 2px 20px;
+        color:#669900;
+    }
 </style>
 {% end %} {% block body %}
-<div></div>
+<div>
+	<table id="form" class="tbList tbHover" style="margin: 50px 0px 0px 50px;">
+        <tr>
+            <th style="width:100px;"><font style="color:red">*</font>姓名：</th>
+            <td style="width:600px;">
+            <input type="text" class="realName txt">
+            </td>
+        </tr>
+        <tr>
+            <th><font style="color:red">*</font>邮箱：</th>
+            <td>
+            <input type="text" class="email txt">
+            </td>
+        </tr>
+        <tr>
+            <th>手机：</th>
+            <td>
+            <input type="text" class="mobile txt" maxlength="11">
+            </td>
+        </tr>
+        <tr>
+            <th>送餐地址：</th>
+            <td>
+            <input type="text" class="address txt" style="width:400px;">
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: center;padding-top: 48px;">
+    <button id="btnSubmit" class="bigBtn">保 存</button>
+    <button id="btnReturn" class="midBtn">返 回</button>
+    </div>
+	
+</div>
 
 
 {% end %} 
